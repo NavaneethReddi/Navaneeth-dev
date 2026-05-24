@@ -47,11 +47,11 @@ export default function Nav() {
             <SignInButton>
               <button className="px-3 py-2 text-sm rounded-md text-white hover:bg-slate-800">Sign In</button>
             </SignInButton>
-            <SignUpButton>
+            {/* <SignUpButton>
               <button className="bg-purple-700 text-white rounded-full font-medium text-sm h-10 px-4 cursor-pointer">
                 Sign Up
               </button>
-            </SignUpButton>
+            </SignUpButton> */}
           </Show>
           <Show when="signed-in">
             <UserButton />
