@@ -1,372 +1,152 @@
-'use client';
+"use client";
 
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Testimonial = {
   name: string;
   feedback: string;
-  role?: string;
-  avatar?: string;
-  rating?: number;
+  role: string;
+  initials: string;
+  rating: number;
 };
 
 const testimonials: Testimonial[] = [
   {
     name: "Karen Longworth, CSM, ICP-ACC",
-    feedback:
-      "Navaneeth has been a pleasure to have on our team! He is always taking initiative to help find the best experience for our customers",
-     role: "Senior Scrum Master at U.S. Bank",
-    avatar: "https://placehold.co/90x90/111827/ffb347?text=K",
+    feedback: "Navaneeth has been a pleasure to have on our team! He is always taking initiative to help find the best experience for our customers.",
+    role: "Senior Scrum Master at U.S. Bank",
+    initials: "K",
     rating: 5,
   },
   {
     name: "Jagadeesh Natarajan",
-    feedback:
-      "Navaneeth is one of the cool and dedicated developer I ever see. He is very punctual and calm and more over very good at technical",
-     role: "Technical Architect, Cognizant Technologies",
-    avatar: "https://placehold.co/90x90/111827/ffb347?text=J",
+    feedback: "Navaneeth is one of the coolest and most dedicated developers I have ever seen. He is very punctual, calm, and above all very good technically.",
+    role: "Technical Architect, Cognizant Technologies",
+    initials: "J",
     rating: 5,
   },
   {
     name: "Brad Mages",
-    feedback:
-      "A valuable and productive technical resource. Has a great ability to connect with stakeholders and create operational efficiencies", 
-     role: "Product Owner, Salesforce",
-    avatar: "https://placehold.co/90x90/111827/ffb347?text=B",
+    feedback: "A valuable and productive technical resource. Has a great ability to connect with stakeholders and create operational efficiencies.",
+    role: "Product Owner, Salesforce",
+    initials: "B",
     rating: 5,
   },
 ];
 
-function StarRating({ rating = 5 }: { rating?: number }) {
+function Stars({ count = 5 }: { count?: number }) {
   return (
-    <div className="star-rating" style={{ color: "#FFD700" }}>
-      {Array.from({ length: 5 }).map((_, i) =>
-        i < rating ? "★" : "☆"
-      )}
+    <div className="flex gap-0.5 justify-center mb-4">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span key={i} className={i < count ? "text-amber-400" : "text-slate-700"}>★</span>
+      ))}
     </div>
   );
 }
 
-// ...existing imports and code...
-
-// ...existing imports and code...
+function Card({ t }: { t: Testimonial }) {
+  return (
+    <div className="flex-shrink-0 w-80 bg-slate-900 border border-slate-800 rounded-2xl p-7 flex flex-col items-center text-center">
+      {/* Avatar */}
+      <div className="w-16 h-16 rounded-full bg-slate-800 border-2 border-amber-400/60 flex items-center justify-center mb-4 text-amber-400 font-bold text-xl">
+        {t.initials}
+      </div>
+      <Stars count={t.rating} />
+      <p className="text-slate-300 text-sm leading-relaxed italic mb-5">
+        &ldquo;{t.feedback}&rdquo;
+      </p>
+      <div className="mt-auto">
+        <p className="text-white font-semibold text-sm">{t.name}</p>
+        <p className="text-slate-500 text-xs mt-0.5">{t.role}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Testimonials() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  // Detect mobile
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 600;
-  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
-  // Duplicate testimonials for infinite effect on desktop
-  const trainTestimonials = [...testimonials, ...testimonials];
+  const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
 
-  // Increased grid size
-  const gridWidth = 420;
-  const gridHeight = 440;
-
-  const prev = () => setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  const next = () => setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  // Duplicate cards for seamless infinite scroll
+  const scrollCards = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <div
-      style={{
-        width: "100%",
-        overflow: "hidden",
-        position: "relative",
-        padding: "2rem 0",
-        boxSizing: "border-box",
-        maxWidth: "100vw",
-      }}
-    >
-      <h2
-        style={{
-          color: "#ffb347",
-          fontWeight: 700,
-          fontSize: "2rem",
-          marginBottom: "2rem",
-          letterSpacing: "0.5px",
-          textAlign: "center",
-        }}
-      >
-        Testimonials
-      </h2>
+    <section className="border-t border-slate-800">
+      {/* Header aligned to max-w-6xl — same as every other section */}
+      <div className="max-w-6xl mx-auto px-6 pt-20 pb-10">
+        <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Testimonials</p>
+        <h2 className="text-4xl font-bold mb-3">What People Say</h2>
+        <p className="text-slate-400">Kind words from colleagues and stakeholders.</p>
+      </div>
+
       {isMobile ? (
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            position: "relative",
-            boxSizing: "border-box",
-            maxWidth: "100vw",
-            overflow: "hidden",
-          }}
-        >
-          <div
-            style={{
-              minWidth: "96vw",
-              maxWidth: "96vw",
-              minHeight: gridHeight,
-              maxHeight: gridHeight,
-              background: "linear-gradient(135deg, #232526 60%, #3a3a3a 100%)",
-              borderRadius: "18px",
-              boxShadow: "0 2px 16px rgba(67,97,238,0.10)",
-              padding: "2.5rem 1.2rem 2rem 1.2rem",
-              color: "#f8fafc",
-              border: "1.5px solid #353b48",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              marginBottom: "1rem",
-              boxSizing: "border-box",
-              justifyContent: "center",
-              height: gridHeight,
-              position: "relative",
-              overflow: "hidden",
-              wordBreak: "break-word",
-            }}
-          >
-            <img
-              src={testimonials[current].avatar}
-              alt={testimonials[current].name}
-              style={{
-                width: 90,
-                height: 90,
-                borderRadius: "50%",
-                objectFit: "cover",
-                marginBottom: "1.2rem",
-                border: "3px solid #ffb347",
-                boxShadow: "0 2px 8px rgba(67,97,238,0.10)",
-              }}
-            />
-            <StarRating rating={testimonials[current].rating} />
-            <div
-              style={{
-                width: "100%",
-                overflowY: "auto",
-                maxHeight: 160,
-                margin: "1.5rem 0 1rem 0",
-                flex: 1,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                scrollbarWidth: "thin",
-                msOverflowStyle: "auto",
-              }}
-            >
-              <p
-                style={{
-                  fontSize: "1.18rem",
-                  fontStyle: "italic",
-                  color: "#e0e7ef",
-                  textAlign: "center",
-                  lineHeight: 1.7,
-                  margin: 0,
-                  padding: 0,
-                  width: "100%",
-                  wordBreak: "break-word",
-                }}
-              >
-                "{testimonials[current].feedback}"
-              </p>
-            </div>
-            <div
-              style={{
-                fontWeight: 700,
-                color: "#ffb347",
-                marginTop: "0.7rem",
-                fontSize: "1.18rem",
-                textAlign: "center",
-                wordBreak: "break-word",
-              }}
-            >
-              {testimonials[current].name}
-            </div>
-            <div
-              style={{
-                color: "#bfc9d1",
-                fontSize: "1.08rem",
-                marginTop: "0.2rem",
-                textAlign: "center",
-                wordBreak: "break-word",
-              }}
-            >
-              {testimonials[current].role}
-            </div>
-            {/* Navigation arrows */}
+        /* Mobile: arrow carousel, full-width card */
+        <div className="px-6 pb-20 relative">
+          <Card t={testimonials[current]} />
+          <div className="flex justify-center gap-4 mt-6">
             <button
               onClick={prev}
-              style={{
-                position: "absolute",
-                left: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "rgba(67,97,238,0.08)",
-                border: "none",
-                borderRadius: "50%",
-                width: 38,
-                height: 38,
-                color: "#ffb347",
-                fontSize: 26,
-                cursor: "pointer",
-                zIndex: 2,
-              }}
+              className="w-10 h-10 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
               aria-label="Previous"
             >
-              &#8592;
+              ←
             </button>
+            <div className="flex gap-1.5 items-center">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === current ? "bg-cyan-400" : "bg-slate-700"}`}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
             <button
               onClick={next}
-              style={{
-                position: "absolute",
-                right: 10,
-                top: "50%",
-                transform: "translateY(-50%)",
-                background: "rgba(67,97,238,0.08)",
-                border: "none",
-                borderRadius: "50%",
-                width: 38,
-                height: 38,
-                color: "#ffb347",
-                fontSize: 26,
-                cursor: "pointer",
-                zIndex: 2,
-              }}
+              className="w-10 h-10 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
               aria-label="Next"
             >
-              &#8594;
+              →
             </button>
           </div>
         </div>
       ) : (
+        /* Desktop: infinite scroll train — overflows viewport intentionally */
         <div
-          style={{
-            width: "100%",
-            overflow: "hidden",
-            position: "relative",
-            boxSizing: "border-box",
-            maxWidth: "100vw",
-          }}
+          className="overflow-hidden pb-20"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
           <div
+            className="flex gap-6 w-max"
             style={{
-              display: "flex",
-              alignItems: "center",
-              animation: "testimonial-train 18s linear infinite",
+              animation: "testimonial-scroll 24s linear infinite",
               animationPlayState: paused ? "paused" : "running",
-              gap: "2.5rem",
-              willChange: "transform",
             }}
           >
-            {trainTestimonials.map((t, idx) => (
-              <div
-                key={idx}
-                style={{
-                  minWidth: gridWidth,
-                  maxWidth: gridWidth,
-                  minHeight: gridHeight,
-                  maxHeight: gridHeight,
-                  background: "linear-gradient(135deg, #232526 60%, #3a3a3a 100%)",
-                  borderRadius: "18px",
-                  boxShadow: "0 2px 16px rgba(67,97,238,0.10)",
-                  padding: "2.5rem 2rem 2rem 2rem",
-                  color: "#f8fafc",
-                  border: "1.5px solid #353b48",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginBottom: "1rem",
-                  boxSizing: "border-box",
-                  justifyContent: "center",
-                  height: gridHeight,
-                  overflow: "hidden",
-                  wordBreak: "break-word",
-                }}
-              >
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  style={{
-                    width: 90,
-                    height: 90,
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    marginBottom: "1.2rem",
-                    border: "3px solid #ffb347",
-                    boxShadow: "0 2px 8px rgba(67,97,238,0.10)",
-                  }}
-                />
-                <StarRating rating={t.rating} />
-                <div
-                  style={{
-                    width: "100%",
-                    overflowY: "auto",
-                    maxHeight: 160,
-                    margin: "1.5rem 0 1rem 0",
-                    flex: 1,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    scrollbarWidth: "thin",
-                    msOverflowStyle: "auto",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "1.18rem",
-                      fontStyle: "italic",
-                      color: "#e0e7ef",
-                      textAlign: "center",
-                      lineHeight: 1.7,
-                      margin: 0,
-                      padding: 0,
-                      width: "100%",
-                      wordBreak: "break-word",
-                    }}
-                  >
-                    "{t.feedback}"
-                  </p>
-                </div>
-                <div
-                  style={{
-                    fontWeight: 700,
-                    color: "#ffb347",
-                    marginTop: "0.7rem",
-                    fontSize: "1.18rem",
-                    textAlign: "center",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  {t.name}
-                </div>
-                <div
-                  style={{
-                    color: "#bfc9d1",
-                    fontSize: "1.08rem",
-                    marginTop: "0.2rem",
-                    textAlign: "center",
-                    wordBreak: "break-word",
-                  }}
-                >
-                  {t.role}
-                </div>
-              </div>
+            {scrollCards.map((t, i) => (
+              <Card key={i} t={t} />
             ))}
           </div>
+          <style>{`
+            @keyframes testimonial-scroll {
+              0%   { transform: translateX(0); }
+              100% { transform: translateX(calc(-86rem / 3)); }
+            }
+          `}</style>
         </div>
       )}
-      <style>
-        {`
-          @keyframes testimonial-train {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}
-      </style>
-    </div>
+    </section>
   );
 }

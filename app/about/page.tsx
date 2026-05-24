@@ -1,16 +1,17 @@
-
- 
 const highlights = [
   { value: "12+", label: "Years Experience" },
   { value: "30+", label: "Enterprise Apps" },
   { value: "40%", label: "Perf Improvement" },
   { value: "20+", label: "Devs Mentored" },
 ];
-export default function  AboutSection() {
+
+export default function AboutSection() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-         <section className="border-t border-slate-800 py-16 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section className="border-t border-slate-800">
+      <div className="max-w-6xl mx-auto px-6 py-20">
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
           {highlights.map(({ value, label }) => (
             <div key={label} className="text-center">
               <p className="text-4xl font-bold text-cyan-400 mb-1">{value}</p>
@@ -18,11 +19,9 @@ export default function  AboutSection() {
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Quick intro */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+        {/* Intro + cards */}
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-6">
               Building enterprise software that{" "}
@@ -57,8 +56,8 @@ export default function  AboutSection() {
             ))}
           </div>
         </div>
-       
-      </section>
-    </div>
+
+      </div>
+    </section>
   );
 }

@@ -2,17 +2,12 @@ import Link from "next/link";
 import Nav from "./components/page";
 
 import { ExperienceSection } from "./experience/page";
-import  AboutSection  from "./about/page";
+import AboutSection from "./about/page";
 
 import { SkillsSection } from "./skills/page";
 import { ContactSection } from "./contact/page";
 
 import Testimonials from "./testimonials/page";
-
-
-
-
-
 
 const topSkills = [
   "React", "Next.js", "TypeScript", "Node.js",
@@ -22,10 +17,10 @@ const topSkills = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
-    <Nav />
+      <Nav />
 
-      {/* Hero */}
-      <section className="min-h-screen flex items-start justify-center px-6 pt-20 pb-4 w-full mx-auto">
+      {/* Hero — tighter vertical padding, no forced full-screen height */}
+      <section className="flex items-center justify-center px-6 pt-10 pb-10">
         <div className="w-full max-w-6xl text-center">
           <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-4">
             Available for opportunities
@@ -36,7 +31,7 @@ export default function Home() {
               Principal Architect
             </span>
           </h1>
-          <p className="mx-auto text-slate-400 text-lg leading-relaxed mb-8 max-w-4xl">
+          <p className="mx-auto text-slate-400 text-lg leading-relaxed mb-8 max-w-3xl">
             Senior Full-Stack Developer &amp; Principal Architect with 12+ years designing
             scalable, high-performance web applications for Fortune 500 financial institutions.
             Currently at{" "}
@@ -71,16 +66,13 @@ export default function Home() {
             ))}
           </div>
         </div>
-     
       </section>
+
       <AboutSection />
       <ExperienceSection />
       <SkillsSection />
       <ContactSection />
       <Testimonials />
-      {/* Stats */}
-      
-
 
       {/* Footer */}
       <footer className="border-t border-slate-800 py-8 px-6 text-center text-slate-500 text-sm">

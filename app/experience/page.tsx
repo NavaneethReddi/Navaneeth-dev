@@ -94,72 +94,74 @@ const jobs = [
   },
 ];
 
+function Timeline() {
+  return (
+    <div className="relative">
+      {/* Vertical line */}
+      <div className="absolute left-[7px] top-2 bottom-0 w-px bg-slate-800" />
+      <div className="space-y-10">
+        {jobs.map((job, i) => (
+          <div key={i} className="relative pl-10">
+            {/* Dot */}
+            <div
+              className={`absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 ${
+                job.current
+                  ? "bg-cyan-400 border-cyan-400"
+                  : "bg-slate-950 border-slate-600"
+              }`}
+            />
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-600 transition-colors">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-lg font-semibold text-white">{job.title}</h3>
+                    {job.current && (
+                      <span className="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 text-xs font-medium rounded-full border border-cyan-500/20">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-slate-300 font-medium">{job.company}</p>
+                  <p className="text-slate-500 text-sm">{job.location}</p>
+                </div>
+                <span className="text-slate-400 text-sm font-mono whitespace-nowrap">{job.period}</span>
+              </div>
+              <ul className="space-y-2 mb-5">
+                {job.bullets.map((b, j) => (
+                  <li key={j} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
+                    <span className="text-cyan-400 mt-1 flex-shrink-0">›</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2">
+                {job.stack.map((s) => (
+                  <span
+                    key={s}
+                    className="px-2.5 py-0.5 text-xs font-mono bg-slate-800 text-slate-400 border border-slate-700 rounded-md"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ExperienceSection() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <section className="border-t border-slate-800">
+      <div className="max-w-6xl mx-auto px-6 py-20">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
-        <h1 className="text-4xl font-bold mb-3">Work Experience</h1>
+        <h2 className="text-4xl font-bold mb-3">Work Experience</h2>
         <p className="text-slate-400 mb-14">
           12+ years delivering enterprise-grade full-stack applications across finance, energy, and transportation.
         </p>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 top-2 bottom-0 w-px bg-slate-800 ml-[7px]" />
-
-          <div className="space-y-12">
-            {jobs.map((job, i) => (
-              <div key={i} className="relative pl-10">
-                {/* Dot */}
-                <div
-                  className={`absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 ${
-                    job.current
-                      ? "bg-cyan-400 border-cyan-400"
-                      : "bg-slate-950 border-slate-600"
-                  }`}
-                />
-
-                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-600 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-lg font-semibold text-white">{job.title}</h3>
-                        {job.current && (
-                          <span className="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 text-xs font-medium rounded-full border border-cyan-500/20">
-                            Current
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-slate-300 font-medium">{job.company}</p>
-                      <p className="text-slate-500 text-sm">{job.location}</p>
-                    </div>
-                    <span className="text-slate-400 text-sm font-mono whitespace-nowrap">{job.period}</span>
-                  </div>
-
-                  <ul className="space-y-2 mb-5">
-                    {job.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
-                        <span className="text-cyan-400 mt-1 flex-shrink-0">›</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2">
-                    {job.stack.map((s) => (
-                      <span
-                        key={s}
-                        className="px-2.5 py-0.5 text-xs font-mono bg-slate-800 text-slate-400 border border-slate-700 rounded-md"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Timeline />
 
         {/* Education */}
         <div className="mt-20">
@@ -185,14 +187,17 @@ export function ExperienceSection() {
           </div>
         </div>
       </div>
-   );
+    </section>
+  );
 }
 
 export default function ExperiencePage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <Nav />
-      <ExperienceSection />
+      <div className="pt-16">
+        <ExperienceSection />
+      </div>
     </main>
   );
 }

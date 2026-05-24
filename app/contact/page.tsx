@@ -13,15 +13,15 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Wire to your preferred email service (EmailJS, Resend, Nodemailer, etc.)
     console.log("Form submitted:", form);
     setSubmitted(true);
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
+    <section className="border-t border-slate-800">
+      <div className="max-w-6xl mx-auto px-6 py-20">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
-        <h1 className="text-4xl font-bold mb-3">Get in Touch</h1>
+        <h2 className="text-4xl font-bold mb-3">Get in Touch</h2>
         <p className="text-slate-400 mb-14">
           Open to senior engineering roles, consulting, and architecture reviews.
         </p>
@@ -30,7 +30,7 @@ export function ContactSection() {
           {/* Contact info */}
           <div className="md:col-span-2 space-y-8">
             <div>
-              <h2 className="text-lg font-semibold mb-5">Contact Details</h2>
+              <h3 className="text-lg font-semibold mb-5">Contact Details</h3>
               <div className="space-y-4">
                 {[
                   { label: "Email", value: "Navaneethr.work9@gmail.com", href: "mailto:Navaneethr.work9@gmail.com" },
@@ -54,7 +54,7 @@ export function ContactSection() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold mb-4">Currently Open To</h2>
+              <h3 className="text-lg font-semibold mb-4">Currently Open To</h3>
               <div className="space-y-2">
                 {[
                   "Principal / Staff Engineer roles",
@@ -84,47 +84,27 @@ export function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-sm text-slate-400 mb-1.5">
-                      Name
-                    </label>
+                    <label htmlFor="name" className="block text-sm text-slate-400 mb-1.5">Name</label>
                     <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
+                      id="name" name="name" type="text" required
+                      value={form.name} onChange={handleChange} placeholder="Your name"
                       className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm text-slate-400 mb-1.5">
-                      Email
-                    </label>
+                    <label htmlFor="email" className="block text-sm text-slate-400 mb-1.5">Email</label>
                     <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
+                      id="email" name="email" type="email" required
+                      value={form.email} onChange={handleChange} placeholder="your@email.com"
                       className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
                     />
                   </div>
                 </div>
-
                 <div>
-                  <label htmlFor="subject" className="block text-sm text-slate-400 mb-1.5">
-                    Subject
-                  </label>
+                  <label htmlFor="subject" className="block text-sm text-slate-400 mb-1.5">Subject</label>
                   <select
-                    id="subject"
-                    name="subject"
-                    required
-                    value={form.subject}
-                    onChange={handleChange}
+                    id="subject" name="subject" required
+                    value={form.subject} onChange={handleChange}
                     className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 transition-colors"
                   >
                     <option value="" disabled>Select a subject…</option>
@@ -135,23 +115,15 @@ export function ContactSection() {
                     <option>Other</option>
                   </select>
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm text-slate-400 mb-1.5">
-                    Message
-                  </label>
+                  <label htmlFor="message" className="block text-sm text-slate-400 mb-1.5">Message</label>
                   <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={form.message}
-                    onChange={handleChange}
+                    id="message" name="message" required rows={6}
+                    value={form.message} onChange={handleChange}
                     placeholder="Tell me about the opportunity or project…"
                     className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
                   />
                 </div>
-
                 <button
                   type="submit"
                   className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-xl transition-colors"
@@ -163,14 +135,17 @@ export function ContactSection() {
           </div>
         </div>
       </div>
-   );
+    </section>
+  );
 }
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <Nav />
-      <ContactSection />
+      <div className="pt-16">
+        <ContactSection />
+      </div>
     </main>
   );
 }

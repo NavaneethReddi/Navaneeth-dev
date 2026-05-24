@@ -68,12 +68,12 @@ const skillGroups = [
   },
 ];
 
-const colorMap: Record<string, { bar: string; badge: string; text: string }> = {
-  cyan: { bar: "bg-cyan-400", badge: "bg-cyan-500/10 border-cyan-500/20", text: "text-cyan-400" },
-  violet: { bar: "bg-violet-400", badge: "bg-violet-500/10 border-violet-500/20", text: "text-violet-400" },
-  sky: { bar: "bg-sky-400", badge: "bg-sky-500/10 border-sky-500/20", text: "text-sky-400" },
-  emerald: { bar: "bg-emerald-400", badge: "bg-emerald-500/10 border-emerald-500/20", text: "text-emerald-400" },
-  amber: { bar: "bg-amber-400", badge: "bg-amber-500/10 border-amber-500/20", text: "text-amber-400" },
+const colorMap: Record<string, { bar: string; text: string }> = {
+  cyan:    { bar: "bg-cyan-400",    text: "text-cyan-400" },
+  violet:  { bar: "bg-violet-400",  text: "text-violet-400" },
+  sky:     { bar: "bg-sky-400",     text: "text-sky-400" },
+  emerald: { bar: "bg-emerald-400", text: "text-emerald-400" },
+  amber:   { bar: "bg-amber-400",   text: "text-amber-400" },
 };
 
 const tools = [
@@ -84,14 +84,15 @@ const tools = [
 
 export function SkillsSection() {
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
+    <section className="border-t border-slate-800">
+      <div className="max-w-6xl mx-auto px-6 py-20">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Expertise</p>
-        <h1 className="text-4xl font-bold mb-3">Technical Skills</h1>
+        <h2 className="text-4xl font-bold mb-3">Technical Skills</h2>
         <p className="text-slate-400 mb-14">
           A breadth of technologies refined over 12+ years of enterprise engineering.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {skillGroups.map((group) => {
             const colors = colorMap[group.color];
             return (
@@ -101,7 +102,7 @@ export function SkillsSection() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-2xl">{group.icon}</span>
-                  <h2 className={`text-lg font-semibold ${colors.text}`}>{group.category}</h2>
+                  <h3 className={`text-lg font-semibold ${colors.text}`}>{group.category}</h3>
                 </div>
                 <div className="space-y-4">
                   {group.skills.map((skill) => (
@@ -124,9 +125,9 @@ export function SkillsSection() {
           })}
         </div>
 
-        {/* Tools & platforms */}
+        {/* Tools */}
         <div className="mt-16">
-          <h2 className="text-xl font-semibold mb-6 text-white">Tools & Platforms</h2>
+          <h3 className="text-xl font-semibold mb-6 text-white">Tools &amp; Platforms</h3>
           <div className="flex flex-wrap gap-3">
             {tools.map((tool) => (
               <span
@@ -141,7 +142,7 @@ export function SkillsSection() {
 
         {/* Achievements */}
         <div className="mt-16">
-          <h2 className="text-xl font-semibold mb-6 text-white">Key Achievements</h2>
+          <h3 className="text-xl font-semibold mb-6 text-white">Key Achievements</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               { icon: "🏗️", text: "Led development of 30+ enterprise-grade applications used by thousands of users daily." },
@@ -151,10 +152,7 @@ export function SkillsSection() {
               { icon: "🤖", text: "Hands-on with Generative AI — LLMs, embeddings, AI-driven personalization, and conversational UIs." },
               { icon: "🧰", text: "Experienced with agentic programming tools: GitHub Copilot, Claude Code." },
             ].map(({ icon, text }) => (
-              <div
-                key={text}
-                className="flex gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl"
-              >
+              <div key={text} className="flex gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl">
                 <span className="text-xl mt-0.5">{icon}</span>
                 <p className="text-slate-400 text-sm leading-relaxed">{text}</p>
               </div>
@@ -162,14 +160,17 @@ export function SkillsSection() {
           </div>
         </div>
       </div>
-   );
+    </section>
+  );
 }
 
 export default function SkillsPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <Nav />
-      <SkillsSection />
+      <div className="pt-16">
+        <SkillsSection />
+      </div>
     </main>
   );
 }
