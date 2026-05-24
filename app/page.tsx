@@ -2,7 +2,7 @@ import Link from "next/link";
 import Nav from "./components/page";
 
 import { ExperienceSection } from "./experience/page";
-import { AboutSection } from "./about/page";
+import  AboutSection  from "./about/page";
 
 import { SkillsSection } from "./skills/page";
 import { ContactSection } from "./contact/page";
