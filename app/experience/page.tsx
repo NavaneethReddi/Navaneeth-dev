@@ -94,12 +94,9 @@ const jobs = [
   },
 ];
 
-export default function ExperiencePage() {
+export function ExperienceSection() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <Nav />
-
-      <div className="max-w-4xl mx-auto px-6 pt-32 pb-20">
+    <div className="max-w-4xl mx-auto px-6 py-12">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
         <h1 className="text-4xl font-bold mb-3">Work Experience</h1>
         <p className="text-slate-400 mb-14">
@@ -188,6 +185,14 @@ export default function ExperiencePage() {
           </div>
         </div>
       </div>
+   );
+}
+
+export default function ExperiencePage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      <Nav />
+      <ExperienceSection />
     </main>
   );
 }

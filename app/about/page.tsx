@@ -93,101 +93,65 @@ const jobs = [
     stack: ["Angular 5", "TypeScript", "d3.js", "REST APIs", "C#"],
   },
 ];
-
-export default function ExperiencePage() {
+const highlights = [
+  { value: "12+", label: "Years Experience" },
+  { value: "30+", label: "Enterprise Apps" },
+  { value: "40%", label: "Perf Improvement" },
+  { value: "20+", label: "Devs Mentored" },
+];
+export function AboutSection() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <Nav />
-
-      <div className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-        <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
-        <h1 className="text-4xl font-bold mb-3">Work Experience</h1>
-        <p className="text-slate-400 mb-14">
-          12+ years delivering enterprise-grade full-stack applications across finance, energy, and transportation.
-        </p>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 top-2 bottom-0 w-px bg-slate-800 ml-[7px]" />
-
-          <div className="space-y-12">
-            {jobs.map((job, i) => (
-              <div key={i} className="relative pl-10">
-                {/* Dot */}
-                <div
-                  className={`absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 ${
-                    job.current
-                      ? "bg-cyan-400 border-cyan-400"
-                      : "bg-slate-950 border-slate-600"
-                  }`}
-                />
-
-                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-600 transition-colors">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="text-lg font-semibold text-white">{job.title}</h3>
-                        {job.current && (
-                          <span className="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 text-xs font-medium rounded-full border border-cyan-500/20">
-                            Current
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-slate-300 font-medium">{job.company}</p>
-                      <p className="text-slate-500 text-sm">{job.location}</p>
-                    </div>
-                    <span className="text-slate-400 text-sm font-mono whitespace-nowrap">{job.period}</span>
-                  </div>
-
-                  <ul className="space-y-2 mb-5">
-                    {job.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
-                        <span className="text-cyan-400 mt-1 flex-shrink-0">›</span>
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-wrap gap-2">
-                    {job.stack.map((s) => (
-                      <span
-                        key={s}
-                        className="px-2.5 py-0.5 text-xs font-mono bg-slate-800 text-slate-400 border border-slate-700 rounded-md"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="max-w-4xl mx-auto px-6 py-12">
+         <section className="border-t border-slate-800 py-16 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+          {highlights.map(({ value, label }) => (
+            <div key={label} className="text-center">
+              <p className="text-4xl font-bold text-cyan-400 mb-1">{value}</p>
+              <p className="text-slate-400 text-sm">{label}</p>
+            </div>
+          ))}
         </div>
+      </section>
 
-        {/* Education */}
-        <div className="mt-20">
-          <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Education</p>
-          <h2 className="text-2xl font-bold mb-8">Academic Background</h2>
-          <div className="space-y-4">
+      {/* Quick intro */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 className="text-3xl font-bold mb-6">
+              Building enterprise software that{" "}
+              <span className="text-cyan-400">scales</span>
+            </h2>
+            <p className="text-slate-400 leading-relaxed mb-4">
+              From micro-frontend architectures to event-driven microservices, I architect
+              full-stack solutions that handle real-world scale at financial institutions
+              like US Bank and Discover Financial.
+            </p>
+            <p className="text-slate-400 leading-relaxed">
+              I bring deep expertise in React, Next.js, and the modern frontend ecosystem,
+              paired with strong backend skills in Node.js and Java Spring Boot — bridging
+              design systems to production deployments on AWS and Azure.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
             {[
-              { degree: "Master's in Information Technology Management", school: "Cumberland University", year: "2018" },
-              { degree: "Master's in Computer Science", school: "Silicon Valley University", year: "2016" },
-              { degree: "Bachelor's in Electronics & Communication Engineering", school: "JNTUH", year: "2014" },
-            ].map((edu) => (
+              { icon: "⚛️", title: "Frontend", desc: "React, Next.js, Angular, TypeScript" },
+              { icon: "⚙️", title: "Backend", desc: "Node.js, Spring Boot, NestJS" },
+              { icon: "☁️", title: "Cloud", desc: "AWS, Azure, Docker, Kubernetes" },
+              { icon: "🗄️", title: "Data", desc: "MongoDB, PostgreSQL, Redis, Kafka" },
+            ].map(({ icon, title, desc }) => (
               <div
-                key={edu.school}
-                className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-slate-900 border border-slate-800 rounded-xl"
+                key={title}
+                className="p-5 bg-slate-900 border border-slate-800 rounded-2xl hover:border-slate-600 transition-colors"
               >
-                <div>
-                  <p className="font-medium text-white">{edu.degree}</p>
-                  <p className="text-slate-400 text-sm">{edu.school}</p>
-                </div>
-                <span className="text-slate-500 text-sm font-mono mt-1 sm:mt-0">{edu.year}</span>
+                <p className="text-2xl mb-2">{icon}</p>
+                <p className="font-semibold text-white mb-1">{title}</p>
+                <p className="text-slate-400 text-sm">{desc}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
-    </main>
+       
+      </section>
+    </div>
   );
 }

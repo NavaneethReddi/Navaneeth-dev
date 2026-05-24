@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Nav from "../components/page";
 
-export default function ContactPage() {
+export function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -19,10 +19,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <Nav />
-
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-20">
+    <div className="max-w-5xl mx-auto px-6 py-12">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
         <h1 className="text-4xl font-bold mb-3">Get in Touch</h1>
         <p className="text-slate-400 mb-14">
@@ -166,6 +163,14 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+   );
+}
+
+export default function ContactPage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      <Nav />
+      <ContactSection />
     </main>
   );
 }

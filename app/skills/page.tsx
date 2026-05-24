@@ -82,12 +82,9 @@ const tools = [
   "Adobe XD", "InVision", "d3.js",
 ];
 
-export default function SkillsPage() {
+export function SkillsSection() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <Nav />
-
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-20">
+    <div className="max-w-5xl mx-auto px-6 py-12">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Expertise</p>
         <h1 className="text-4xl font-bold mb-3">Technical Skills</h1>
         <p className="text-slate-400 mb-14">
@@ -165,6 +162,14 @@ export default function SkillsPage() {
           </div>
         </div>
       </div>
+   );
+}
+
+export default function SkillsPage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      <Nav />
+      <SkillsSection />
     </main>
   );
 }
