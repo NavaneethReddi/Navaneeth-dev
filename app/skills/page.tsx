@@ -1,0 +1,170 @@
+import Nav from "../components/page";
+
+const skillGroups = [
+  {
+    category: "Frontend",
+    icon: "⚛️",
+    color: "cyan",
+    skills: [
+      { name: "React.js", level: 98 },
+      { name: "Next.js", level: 95 },
+      { name: "TypeScript", level: 95 },
+      { name: "Angular", level: 90 },
+      { name: "React Native", level: 85 },
+      { name: "Tailwind CSS", level: 92 },
+      { name: "Redux / Zustand", level: 90 },
+      { name: "GraphQL (Apollo)", level: 85 },
+    ],
+  },
+  {
+    category: "Backend",
+    icon: "⚙️",
+    color: "violet",
+    skills: [
+      { name: "Node.js", level: 90 },
+      { name: "Spring Boot (Java)", level: 85 },
+      { name: "Express.js", level: 88 },
+      { name: "NestJS", level: 78 },
+      { name: "REST APIs", level: 95 },
+      { name: "Microservices", level: 88 },
+    ],
+  },
+  {
+    category: "Cloud & DevOps",
+    icon: "☁️",
+    color: "sky",
+    skills: [
+      { name: "AWS (S3, EC2, Lambda)", level: 82 },
+      { name: "Azure", level: 80 },
+      { name: "Docker", level: 82 },
+      { name: "Kubernetes", level: 75 },
+      { name: "Jenkins / CI/CD", level: 80 },
+      { name: "Vite / TurboRepo", level: 88 },
+    ],
+  },
+  {
+    category: "Data & Messaging",
+    icon: "🗄️",
+    color: "emerald",
+    skills: [
+      { name: "MongoDB", level: 82 },
+      { name: "PostgreSQL", level: 80 },
+      { name: "Redis", level: 75 },
+      { name: "Kafka", level: 72 },
+      { name: "DynamoDB", level: 72 },
+      { name: "MySQL", level: 78 },
+    ],
+  },
+  {
+    category: "Testing & Quality",
+    icon: "🧪",
+    color: "amber",
+    skills: [
+      { name: "Jest", level: 88 },
+      { name: "Playwright", level: 82 },
+      { name: "Storybook", level: 85 },
+      { name: "Enzyme / Jasmine", level: 78 },
+    ],
+  },
+];
+
+const colorMap: Record<string, { bar: string; badge: string; text: string }> = {
+  cyan: { bar: "bg-cyan-400", badge: "bg-cyan-500/10 border-cyan-500/20", text: "text-cyan-400" },
+  violet: { bar: "bg-violet-400", badge: "bg-violet-500/10 border-violet-500/20", text: "text-violet-400" },
+  sky: { bar: "bg-sky-400", badge: "bg-sky-500/10 border-sky-500/20", text: "text-sky-400" },
+  emerald: { bar: "bg-emerald-400", badge: "bg-emerald-500/10 border-emerald-500/20", text: "text-emerald-400" },
+  amber: { bar: "bg-amber-400", badge: "bg-amber-500/10 border-amber-500/20", text: "text-amber-400" },
+};
+
+const tools = [
+  "VS Code", "IntelliJ IDEA", "WebStorm", "Figma", "Postman",
+  "Jira", "GitHub", "GitLab", "Webpack", "Babel", "Storybook",
+  "Adobe XD", "InVision", "d3.js",
+];
+
+export default function SkillsPage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      <Nav />
+
+      <div className="max-w-5xl mx-auto px-6 pt-32 pb-20">
+        <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Expertise</p>
+        <h1 className="text-4xl font-bold mb-3">Technical Skills</h1>
+        <p className="text-slate-400 mb-14">
+          A breadth of technologies refined over 12+ years of enterprise engineering.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {skillGroups.map((group) => {
+            const colors = colorMap[group.color];
+            return (
+              <div
+                key={group.category}
+                className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-600 transition-colors"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-2xl">{group.icon}</span>
+                  <h2 className={`text-lg font-semibold ${colors.text}`}>{group.category}</h2>
+                </div>
+                <div className="space-y-4">
+                  {group.skills.map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between items-center mb-1.5">
+                        <span className="text-sm text-slate-300">{skill.name}</span>
+                        <span className="text-xs text-slate-500 font-mono">{skill.level}%</span>
+                      </div>
+                      <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full rounded-full ${colors.bar}`}
+                          style={{ width: `${skill.level}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Tools & platforms */}
+        <div className="mt-16">
+          <h2 className="text-xl font-semibold mb-6 text-white">Tools & Platforms</h2>
+          <div className="flex flex-wrap gap-3">
+            {tools.map((tool) => (
+              <span
+                key={tool}
+                className="px-4 py-2 bg-slate-900 border border-slate-800 text-slate-300 text-sm rounded-xl hover:border-slate-600 transition-colors"
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Achievements */}
+        <div className="mt-16">
+          <h2 className="text-xl font-semibold mb-6 text-white">Key Achievements</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { icon: "🏗️", text: "Led development of 30+ enterprise-grade applications used by thousands of users daily." },
+              { icon: "⚡", text: "Improved application performance by 30–40% through frontend and backend layer optimization." },
+              { icon: "🚀", text: "Delivered full-stack Spring Boot batch systems under tight deadlines — in under 3 weeks." },
+              { icon: "🎓", text: "Mentored teams of up to 20 developers, enforcing architectural best practices." },
+              { icon: "🤖", text: "Hands-on with Generative AI — LLMs, embeddings, AI-driven personalization, and conversational UIs." },
+              { icon: "🧰", text: "Experienced with agentic programming tools: GitHub Copilot, Claude Code." },
+            ].map(({ icon, text }) => (
+              <div
+                key={text}
+                className="flex gap-4 p-4 bg-slate-900 border border-slate-800 rounded-xl"
+              >
+                <span className="text-xl mt-0.5">{icon}</span>
+                <p className="text-slate-400 text-sm leading-relaxed">{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
