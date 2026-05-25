@@ -4,7 +4,7 @@ const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: siteConfig.fullName,
-  jobTitle: siteConfig.title,
+  jobTitle: `${siteConfig.role} & ${siteConfig.title}`,
   description: siteConfig.description,
   url: siteConfig.url,
   email: `mailto:${siteConfig.email}`,
@@ -29,7 +29,7 @@ const personSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: `${siteConfig.name} — Portfolio`,
+  name: siteConfig.fullName,
   url: siteConfig.url,
   description: siteConfig.description,
   inLanguage: 'en-US',
