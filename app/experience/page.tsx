@@ -97,39 +97,37 @@ const jobs = [
 function Timeline() {
   return (
     <div className="relative">
-      {/* Vertical line */}
-      <div className="absolute left-[7px] top-2 bottom-0 w-px bg-slate-800" />
+      <div className="absolute left-[7px] top-2 bottom-0 w-px bg-slate-200 dark:bg-slate-800" />
       <div className="space-y-10">
         {jobs.map((job, i) => (
           <div key={i} className="relative pl-10">
-            {/* Dot */}
             <div
               className={`absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 ${
                 job.current
-                  ? "bg-cyan-400 border-cyan-400"
-                  : "bg-slate-950 border-slate-600"
+                  ? "bg-cyan-500 border-cyan-500"
+                  : "bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-600"
               }`}
             />
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-600 transition-colors">
+            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 hover:border-slate-300 dark:hover:border-slate-600 transition-colors">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-lg font-semibold text-white">{job.title}</h3>
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{job.title}</h3>
                     {job.current && (
-                      <span className="px-2 py-0.5 bg-cyan-500/10 text-cyan-400 text-xs font-medium rounded-full border border-cyan-500/20">
+                      <span className="px-2 py-0.5 bg-cyan-500/10 text-cyan-500 text-xs font-medium rounded-full border border-cyan-500/20">
                         Current
                       </span>
                     )}
                   </div>
-                  <p className="text-slate-300 font-medium">{job.company}</p>
+                  <p className="text-slate-700 dark:text-slate-300 font-medium">{job.company}</p>
                   <p className="text-slate-500 text-sm">{job.location}</p>
                 </div>
-                <span className="text-slate-400 text-sm font-mono whitespace-nowrap">{job.period}</span>
+                <span className="text-slate-500 dark:text-slate-400 text-sm font-mono whitespace-nowrap">{job.period}</span>
               </div>
               <ul className="space-y-2 mb-5">
                 {job.bullets.map((b, j) => (
-                  <li key={j} className="flex gap-3 text-slate-400 text-sm leading-relaxed">
-                    <span className="text-cyan-400 mt-1 flex-shrink-0">›</span>
+                  <li key={j} className="flex gap-3 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    <span className="text-cyan-500 mt-1 flex-shrink-0">›</span>
                     {b}
                   </li>
                 ))}
@@ -138,7 +136,7 @@ function Timeline() {
                 {job.stack.map((s) => (
                   <span
                     key={s}
-                    className="px-2.5 py-0.5 text-xs font-mono bg-slate-800 text-slate-400 border border-slate-700 rounded-md"
+                    className="px-2.5 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 rounded-md"
                   >
                     {s}
                   </span>
@@ -154,19 +152,18 @@ function Timeline() {
 
 export function ExperienceSection() {
   return (
-    <section className="border-t border-slate-800">
+    <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
-        <h2 className="text-4xl font-bold mb-3">Work Experience</h2>
-        <p className="text-slate-400 mb-14">
+        <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
+        <h2 className="text-4xl font-bold mb-3 text-slate-900 dark:text-white">Work Experience</h2>
+        <p className="text-slate-600 dark:text-slate-400 mb-14">
           12+ years delivering enterprise-grade full-stack applications across finance, energy, and transportation.
         </p>
         <Timeline />
 
-        {/* Education */}
         <div className="mt-20">
-          <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Education</p>
-          <h2 className="text-2xl font-bold mb-8">Academic Background</h2>
+          <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Education</p>
+          <h2 className="text-2xl font-bold mb-8 text-slate-900 dark:text-white">Academic Background</h2>
           <div className="space-y-4">
             {[
               { degree: "Master's in Information Technology Management", school: "Cumberland University", year: "2018" },
@@ -175,11 +172,11 @@ export function ExperienceSection() {
             ].map((edu) => (
               <div
                 key={edu.school}
-                className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-slate-900 border border-slate-800 rounded-xl"
+                className="flex flex-col sm:flex-row sm:items-center justify-between p-5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl"
               >
                 <div>
-                  <p className="font-medium text-white">{edu.degree}</p>
-                  <p className="text-slate-400 text-sm">{edu.school}</p>
+                  <p className="font-medium text-slate-900 dark:text-white">{edu.degree}</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">{edu.school}</p>
                 </div>
                 <span className="text-slate-500 text-sm font-mono mt-1 sm:mt-0">{edu.year}</span>
               </div>
@@ -193,11 +190,9 @@ export function ExperienceSection() {
 
 export default function ExperiencePage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <Nav />
-      <div className="pt-16">
-        <ExperienceSection />
-      </div>
+      <div className="pt-16"><ExperienceSection /></div>
     </main>
   );
 }
