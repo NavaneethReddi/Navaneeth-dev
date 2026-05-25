@@ -47,6 +47,19 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* SEO Meta Tags */}
+        <meta name="description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
+        <meta property="og:title" content="Navaneeth Reddy — Principal Architect" />
+        <meta property="og:description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://yourdomain.com/" />
+        <meta property="og:image" content="https://yourdomain.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Navaneeth Reddy — Principal Architect" />
+        <meta name="twitter:description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
+        <meta name="twitter:image" content="https://yourdomain.com/og-image.png" />
+        <link rel="canonical" href="https://yourdomain.com/" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </head>
       {/* pt-16 offsets the fixed nav (h-16 = 64px) so no content hides behind it */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16`}>
