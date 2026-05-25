@@ -48,17 +48,17 @@ export default function RootLayout({
           }}
         />
         {/* SEO Meta Tags */}
-        <meta name="description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
+        <meta name="description" content="Navaneeth reddy pinnapureddy Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
         <meta property="og:title" content="Navaneeth Reddy — Principal Architect" />
         <meta property="og:description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yourdomain.com/" />
-        <meta property="og:image" content="https://yourdomain.com/og-image.png" />
+        <meta property="og:url" content="https://navaneeth-dev-alpha.vercel.app/" />
+        <meta property="og:image" content="https://navaneeth-dev-alpha.vercel.app/" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Navaneeth Reddy — Principal Architect" />
         <meta name="twitter:description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
-        <meta name="twitter:image" content="https://yourdomain.com/og-image.png" />
-        <link rel="canonical" href="https://yourdomain.com/" />
+        <meta name="twitter:image" content="https://navaneeth-dev-alpha.vercel.app/" />
+        <link rel="canonical" href="https://navaneeth-dev-alpha.vercel.app/" />
         <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </head>
       {/* pt-16 offsets the fixed nav (h-16 = 64px) so no content hides behind it */}
