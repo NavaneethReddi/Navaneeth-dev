@@ -25,10 +25,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    // suppressHydrationWarning prevents React mismatch warning
-    // when ThemeProvider adds .dark class client-side on mount
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      {/* pt-16 offsets the fixed nav (h-16 = 64px) so no content hides behind it */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16`}>
         <ClerkProvider>
           <ThemeProvider>
             {children}
