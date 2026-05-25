@@ -1,10 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "./components/page";
 import { ExperienceSection } from "./experience/page";
-import AboutSection from "./about/page";
+import AboutSection from "./about/AboutSection";
 import { SkillsSection } from "./skills/page";
 import { ContactSection } from "./contact/page";
-import Testimonials from "./testimonials/page";
+import TestimonialsSection from "./testimonials/TestimonialsSection";
+import { createPageMetadata, siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: `${siteConfig.name} — ${siteConfig.title}`,
+  description: siteConfig.description,
+  path: "/",
+});
 
 const topSkills = [
   "React", "Next.js", "TypeScript", "Node.js",
@@ -68,7 +76,7 @@ export default function Home() {
       <ExperienceSection />
       <SkillsSection />
       <ContactSection />
-      <Testimonials />
+      <TestimonialsSection />
 
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8 px-6 text-center text-slate-500 text-sm transition-colors">
         <p>

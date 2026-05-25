@@ -3,6 +3,8 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ThemeProvider } from './providers/ThemeProvider'
 import { Analytics } from '@vercel/analytics/next'
+import { JsonLd } from './components/JsonLd'
+import { defaultMetadata } from '@/lib/site'
 import './globals.css'
 
 const geistSans = Geist({
@@ -15,10 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-export const metadata: Metadata = {
-  title: 'Navaneeth Reddy — Principal Architect',
-  description: 'Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience.',
-}
+export const metadata: Metadata = defaultMetadata
 
 export default function RootLayout({
   children,
@@ -28,10 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/*
-          Runs synchronously before React hydrates — prevents any flash of dark mode.
-          Reads localStorage; if nothing saved yet, defaults to light (no .dark class).
-        */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -47,22 +42,9 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* SEO Meta Tags */}
-        <meta name="description" content="Navaneeth reddy pinnapureddy Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
-        <meta property="og:title" content="Navaneeth Reddy — Principal Architect" />
-        <meta property="og:description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://navaneeth-dev-alpha.vercel.app/" />
-        <meta property="og:image" content="https://navaneeth-dev-alpha.vercel.app/" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Navaneeth Reddy — Principal Architect" />
-        <meta name="twitter:description" content="Senior Full-Stack Developer & Principal Architect with 12+ years of enterprise experience." />
-        <meta name="twitter:image" content="https://navaneeth-dev-alpha.vercel.app/" />
-        <link rel="canonical" href="https://navaneeth-dev-alpha.vercel.app/" />
-        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
       </head>
-      {/* pt-16 offsets the fixed nav (h-16 = 64px) so no content hides behind it */}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16`}>
+        <JsonLd />
         <ClerkProvider>
           <ThemeProvider>
             {children}
