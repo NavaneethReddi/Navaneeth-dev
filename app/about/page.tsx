@@ -1,3 +1,16 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Learn about Navaneeth Reddy Pinnapureddy — Principal Architect with 12+ years in enterprise engineering, React, Next.js, and full-stack development. Based in Minneapolis, MN.',
+  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/about' },
+  openGraph: {
+    title: 'About | Navaneeth Reddy',
+    description: 'Learn about Navaneeth Reddy Pinnapureddy — Principal Architect with 12+ years in enterprise engineering, React, Next.js, and full-stack development. Based in Minneapolis, MN.',
+    url: 'https://clerk-nextjs-phi.vercel.app/about',
+  },
+}
+
 const highlights = [
   { value: "12+", label: "Years Experience" },
   { value: "30+", label: "Enterprise Apps" },
