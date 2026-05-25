@@ -1,4 +1,19 @@
-"use client";
+"use client"
+
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Testimonials',
+  description: 'Recommendations from colleagues and stakeholders who have worked with Navaneeth Reddy at US Bank, Cognizant, and Salesforce.',
+  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/testimonials' },
+  openGraph: {
+    title: 'Testimonials | Navaneeth Reddy',
+    description: 'Recommendations from colleagues and stakeholders who have worked with Navaneeth Reddy at US Bank, Cognizant, and Salesforce.',
+    url: 'https://clerk-nextjs-phi.vercel.app/testimonials',
+  },
+}
+
+;
 
 import { useState, useEffect } from "react";
 
