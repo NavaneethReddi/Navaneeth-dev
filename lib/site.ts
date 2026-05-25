@@ -6,9 +6,11 @@ export const SITE_URL = 'https://navaneeth-dev-alpha.vercel.app'
 export const siteConfig = {
   name: 'Navaneeth Reddy',
   fullName: 'Navaneeth Reddy Pinnapureddy',
+  /** Short role line — similar to portfolio sites indexed by name + role */
+  role: 'Full Stack Developer',
   title: 'Principal Architect',
   description:
-    'Senior Full-Stack Developer & Principal Architect with 12+ years designing scalable, high-performance web applications for Fortune 500 financial institutions.',
+    'Navaneeth Reddy Pinnapureddy — Full Stack Developer & Principal Architect with 12+ years designing scalable, high-performance web applications for Fortune 500 financial institutions.',
   url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || SITE_URL,
   locale: 'en_US',
   email: 'Navaneethr.work9@gmail.com',
@@ -18,15 +20,19 @@ export const siteConfig = {
   keywords: [
     'Navaneeth Reddy',
     'Navaneeth Reddy Pinnapureddy',
+    'Navaneeth Reddy Full Stack Developer',
+    'Full Stack Developer',
     'Principal Architect',
-    'Full-Stack Developer',
     'React Developer Minneapolis',
-    'Next.js',
+    'Next.js Developer',
     'TypeScript',
     'Enterprise Software Architect',
     'Discover Financial Services',
   ],
 } as const
+
+/** Homepage title pattern: name + role (like puneeth-reddy.vercel.app) */
+export const homeTitle = `${siteConfig.fullName} | ${siteConfig.role}`
 
 export const publicRoutes = [
   { path: '/', priority: 1, changeFrequency: 'weekly' as const },
@@ -58,7 +64,7 @@ export function createPageMetadata({
       title: pageTitle,
       description,
       url: path,
-      siteName: siteConfig.name,
+      siteName: siteConfig.fullName,
       locale: siteConfig.locale,
       type: 'website',
     },
@@ -73,14 +79,14 @@ export function createPageMetadata({
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.title}`,
+    default: homeTitle,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   authors: [{ name: siteConfig.fullName, url: siteConfig.url }],
   creator: siteConfig.fullName,
-  applicationName: `${siteConfig.name} Portfolio`,
+  applicationName: siteConfig.fullName,
   robots: {
     index: true,
     follow: true,
@@ -99,17 +105,18 @@ export const defaultMetadata: Metadata = {
     type: 'website',
     locale: siteConfig.locale,
     url: '/',
-    siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.title}`,
+    siteName: siteConfig.fullName,
+    title: homeTitle,
     description: siteConfig.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.name} — ${siteConfig.title}`,
+    title: homeTitle,
     description: siteConfig.description,
   },
-  verification: {
-    // Add tokens from Google Search Console when ready:
-    // google: 'your-google-verification-code',
-  },
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION,
+    },
+  }),
 }

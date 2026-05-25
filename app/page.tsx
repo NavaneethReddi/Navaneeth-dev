@@ -6,10 +6,10 @@ import AboutSection from "./about/AboutSection";
 import { SkillsSection } from "./skills/page";
 import { ContactSection } from "./contact/page";
 import TestimonialsSection from "./testimonials/TestimonialsSection";
-import { createPageMetadata, siteConfig } from "@/lib/site";
+import { createPageMetadata, homeTitle, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: `${siteConfig.name} — ${siteConfig.title}`,
+  title: homeTitle,
   description: siteConfig.description,
   path: "/",
 });
