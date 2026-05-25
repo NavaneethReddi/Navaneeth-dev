@@ -1,3 +1,16 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Work Experience',
+  description: '12+ years of enterprise engineering experience at Discover Financial, US Bank, Amtrak, Capital One and more. Full-stack React, Node.js, Spring Boot developer.',
+  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/experience' },
+  openGraph: {
+    title: 'Work Experience | Navaneeth Reddy',
+    description: '12+ years of enterprise engineering experience at Discover Financial, US Bank, Amtrak, Capital One and more. Full-stack React, Node.js, Spring Boot developer.',
+    url: 'https://clerk-nextjs-phi.vercel.app/experience',
+  },
+}
+
 import Nav from "../components/page";
 
 const jobs = [
