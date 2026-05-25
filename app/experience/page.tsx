@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Nav from "../components/page";
+import { createPageMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Experience",
+  description:
+    "Work experience and education for Navaneeth Reddy — 12+ years in enterprise full-stack development at Discover Financial, US Bank, and more.",
+  path: "/experience",
+});
 
 const jobs = [
   {

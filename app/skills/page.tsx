@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Nav from "../components/page";
+import { createPageMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Skills",
+  description:
+    "Technical skills: React, Next.js, TypeScript, Node.js, Spring Boot, AWS, GraphQL, and enterprise architecture expertise.",
+  path: "/skills",
+});
 
 const skillGroups = [
   {
