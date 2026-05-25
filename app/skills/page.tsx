@@ -1,3 +1,16 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Technical Skills',
+  description: 'Expert in React, Next.js, TypeScript, Node.js, Spring Boot, AWS, GraphQL, Kubernetes and more. Full technical skill set of Principal Architect Navaneeth Reddy.',
+  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/skills' },
+  openGraph: {
+    title: 'Technical Skills | Navaneeth Reddy',
+    description: 'Expert in React, Next.js, TypeScript, Node.js, Spring Boot, AWS, GraphQL, Kubernetes and more. Full technical skill set of Principal Architect Navaneeth Reddy.',
+    url: 'https://clerk-nextjs-phi.vercel.app/skills',
+  },
+}
+
 import Nav from "../components/page";
 
 const skillGroups = [
