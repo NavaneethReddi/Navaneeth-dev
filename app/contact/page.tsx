@@ -17,12 +17,14 @@ export function ContactSection() {
     setSubmitted(true);
   };
 
+  const inputClass = "w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors";
+
   return (
-    <section className="border-t border-slate-800">
+    <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
-        <h2 className="text-4xl font-bold mb-3">Get in Touch</h2>
-        <p className="text-slate-400 mb-14">
+        <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
+        <h2 className="text-4xl font-bold mb-3 text-slate-900 dark:text-white">Get in Touch</h2>
+        <p className="text-slate-600 dark:text-slate-400 mb-14">
           Open to senior engineering roles, consulting, and architecture reviews.
         </p>
 
@@ -30,7 +32,7 @@ export function ContactSection() {
           {/* Contact info */}
           <div className="md:col-span-2 space-y-8">
             <div>
-              <h3 className="text-lg font-semibold mb-5">Contact Details</h3>
+              <h3 className="text-lg font-semibold mb-5 text-slate-900 dark:text-white">Contact Details</h3>
               <div className="space-y-4">
                 {[
                   { label: "Email", value: "Navaneethr.work9@gmail.com", href: "mailto:Navaneethr.work9@gmail.com" },
@@ -42,11 +44,9 @@ export function ContactSection() {
                   <div key={label}>
                     <p className="text-xs text-slate-500 uppercase tracking-wide mb-0.5">{label}</p>
                     {href ? (
-                      <a href={href} className="text-cyan-400 hover:text-cyan-300 text-sm font-medium transition-colors">
-                        {value}
-                      </a>
+                      <a href={href} className="text-cyan-500 hover:text-cyan-400 text-sm font-medium transition-colors">{value}</a>
                     ) : (
-                      <p className="text-white text-sm font-medium">{value}</p>
+                      <p className="text-slate-900 dark:text-white text-sm font-medium">{value}</p>
                     )}
                   </div>
                 ))}
@@ -54,7 +54,7 @@ export function ContactSection() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-4">Currently Open To</h3>
+              <h3 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Currently Open To</h3>
               <div className="space-y-2">
                 {[
                   "Principal / Staff Engineer roles",
@@ -63,8 +63,8 @@ export function ContactSection() {
                   "Technical mentorship programs",
                   "AI/LLM integration projects",
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-slate-400 text-sm">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
+                  <div key={item} className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 flex-shrink-0" />
                     {item}
                   </div>
                 ))}
@@ -75,38 +75,26 @@ export function ContactSection() {
           {/* Form */}
           <div className="md:col-span-3">
             {submitted ? (
-              <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-10 text-center">
+              <div className="bg-slate-50 dark:bg-slate-900 border border-cyan-500/30 rounded-2xl p-10 text-center">
                 <p className="text-4xl mb-4">✅</p>
-                <h3 className="text-xl font-semibold mb-2">Message sent!</h3>
-                <p className="text-slate-400">Thanks for reaching out. I&apos;ll get back to you shortly.</p>
+                <h3 className="text-xl font-semibold mb-2 text-slate-900 dark:text-white">Message sent!</h3>
+                <p className="text-slate-600 dark:text-slate-400">Thanks for reaching out. I&apos;ll get back to you shortly.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="name" className="block text-sm text-slate-400 mb-1.5">Name</label>
-                    <input
-                      id="name" name="name" type="text" required
-                      value={form.name} onChange={handleChange} placeholder="Your name"
-                      className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
-                    />
+                    <label htmlFor="name" className="block text-sm text-slate-600 dark:text-slate-400 mb-1.5">Name</label>
+                    <input id="name" name="name" type="text" required value={form.name} onChange={handleChange} placeholder="Your name" className={inputClass} />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm text-slate-400 mb-1.5">Email</label>
-                    <input
-                      id="email" name="email" type="email" required
-                      value={form.email} onChange={handleChange} placeholder="your@email.com"
-                      className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
-                    />
+                    <label htmlFor="email" className="block text-sm text-slate-600 dark:text-slate-400 mb-1.5">Email</label>
+                    <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="your@email.com" className={inputClass} />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm text-slate-400 mb-1.5">Subject</label>
-                  <select
-                    id="subject" name="subject" required
-                    value={form.subject} onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 transition-colors"
-                  >
+                  <label htmlFor="subject" className="block text-sm text-slate-600 dark:text-slate-400 mb-1.5">Subject</label>
+                  <select id="subject" name="subject" required value={form.subject} onChange={handleChange} className={inputClass}>
                     <option value="" disabled>Select a subject…</option>
                     <option>Job opportunity</option>
                     <option>Consulting inquiry</option>
@@ -116,18 +104,10 @@ export function ContactSection() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm text-slate-400 mb-1.5">Message</label>
-                  <textarea
-                    id="message" name="message" required rows={6}
-                    value={form.message} onChange={handleChange}
-                    placeholder="Tell me about the opportunity or project…"
-                    className="w-full bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
-                  />
+                  <label htmlFor="message" className="block text-sm text-slate-600 dark:text-slate-400 mb-1.5">Message</label>
+                  <textarea id="message" name="message" required rows={6} value={form.message} onChange={handleChange} placeholder="Tell me about the opportunity or project…" className={`${inputClass} resize-none`} />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-xl transition-colors"
-                >
+                <button type="submit" className="w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-white font-semibold rounded-xl transition-colors">
                   Send Message
                 </button>
               </form>
@@ -141,11 +121,9 @@ export function ContactSection() {
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <Nav />
-      <div className="pt-16">
-        <ContactSection />
-      </div>
+      <div className="pt-16"><ContactSection /></div>
     </main>
   );
 }
