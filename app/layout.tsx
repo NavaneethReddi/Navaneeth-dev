@@ -26,8 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      		<title> Navaneeth Reddy Pinnapureddy, full stack developer</title>
         <meta name="Navaneeth Reddy Pinnapureddy " content="full stack developer"/>
+             
+      <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
