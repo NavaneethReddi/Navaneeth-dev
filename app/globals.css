@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Enable dark mode via .dark class on <html> (Tailwind v4 syntax) */
+/* Enable dark mode via .dark class on <html> — Tailwind v4 syntax */
 @variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -11,16 +11,4 @@
 .dark {
   --background: #020617;
   --foreground: #f8fafc;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
