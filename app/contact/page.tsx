@@ -33,9 +33,6 @@ export function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-        console.log("Validating email:", form.email);
-
- 
     setLoading(true)
     setStatus(null);
 
