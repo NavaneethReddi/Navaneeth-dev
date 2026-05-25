@@ -46,18 +46,17 @@ function Stars({ count = 5 }: { count?: number }) {
 
 function Card({ t }: { t: Testimonial }) {
   return (
-    <div className="flex-shrink-0 w-80 bg-slate-900 border border-slate-800 rounded-2xl p-7 flex flex-col items-center text-center">
-      {/* Avatar */}
-      <div className="w-16 h-16 rounded-full bg-slate-800 border-2 border-amber-400/60 flex items-center justify-center mb-4 text-amber-400 font-bold text-xl">
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col items-center text-center hover:border-slate-600 transition-colors h-full">
+      <div className="w-16 h-16 rounded-full bg-slate-800 border-2 border-amber-400/60 flex items-center justify-center mb-4 text-amber-400 font-bold text-xl flex-shrink-0">
         {t.initials}
       </div>
       <Stars count={t.rating} />
-      <p className="text-slate-300 text-sm leading-relaxed italic mb-5">
+      <p className="text-slate-300 text-sm leading-relaxed italic mb-6 flex-1">
         &ldquo;{t.feedback}&rdquo;
       </p>
-      <div className="mt-auto">
+      <div>
         <p className="text-white font-semibold text-sm">{t.name}</p>
-        <p className="text-slate-500 text-xs mt-0.5">{t.role}</p>
+        <p className="text-slate-500 text-xs mt-1">{t.role}</p>
       </div>
     </div>
   );
@@ -66,7 +65,6 @@ function Card({ t }: { t: Testimonial }) {
 export default function Testimonials() {
   const [isMobile, setIsMobile] = useState(false);
   const [current, setCurrent] = useState(0);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -78,75 +76,53 @@ export default function Testimonials() {
   const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1));
   const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1));
 
-  // Duplicate cards for seamless infinite scroll
-  const scrollCards = [...testimonials, ...testimonials, ...testimonials];
-
   return (
     <section className="border-t border-slate-800">
-      {/* Header aligned to max-w-6xl — same as every other section */}
-      <div className="max-w-6xl mx-auto px-6 pt-20 pb-10">
+      <div className="max-w-6xl mx-auto px-6 py-20">
         <p className="text-cyan-400 text-sm font-medium tracking-widest uppercase mb-3">Testimonials</p>
         <h2 className="text-4xl font-bold mb-3">What People Say</h2>
-        <p className="text-slate-400">Kind words from colleagues and stakeholders.</p>
-      </div>
+        <p className="text-slate-400 mb-14">Kind words from colleagues and stakeholders.</p>
 
-      {isMobile ? (
-        /* Mobile: arrow carousel, full-width card */
-        <div className="px-6 pb-20 relative">
-          <Card t={testimonials[current]} />
-          <div className="flex justify-center gap-4 mt-6">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
-              aria-label="Previous"
-            >
-              ←
-            </button>
-            <div className="flex gap-1.5 items-center">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  className={`w-1.5 h-1.5 rounded-full transition-colors ${i === current ? "bg-cyan-400" : "bg-slate-700"}`}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                />
-              ))}
+        {isMobile ? (
+          /* Mobile: arrow carousel */
+          <div>
+            <Card t={testimonials[current]} />
+            <div className="flex justify-center gap-4 mt-6">
+              <button
+                onClick={prev}
+                className="w-10 h-10 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
+                aria-label="Previous"
+              >
+                ←
+              </button>
+              <div className="flex gap-1.5 items-center">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors ${i === current ? "bg-cyan-400" : "bg-slate-700"}`}
+                    aria-label={`Go to testimonial ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={next}
+                className="w-10 h-10 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
+                aria-label="Next"
+              >
+                →
+              </button>
             </div>
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition-colors flex items-center justify-center"
-              aria-label="Next"
-            >
-              →
-            </button>
           </div>
-        </div>
-      ) : (
-        /* Desktop: infinite scroll train — overflows viewport intentionally */
-        <div
-          className="overflow-hidden pb-20"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-        >
-          <div
-            className="flex gap-6 w-max"
-            style={{
-              animation: "testimonial-scroll 24s linear infinite",
-              animationPlayState: paused ? "paused" : "running",
-            }}
-          >
-            {scrollCards.map((t, i) => (
+        ) : (
+          /* Desktop: equal-width 3-column grid filling the full container */
+          <div className="grid grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
               <Card key={i} t={t} />
             ))}
           </div>
-          <style>{`
-            @keyframes testimonial-scroll {
-              0%   { transform: translateX(0); }
-              100% { transform: translateX(calc(-86rem / 3)); }
-            }
-          `}</style>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }
