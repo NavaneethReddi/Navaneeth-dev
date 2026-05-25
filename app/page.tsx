@@ -1,4 +1,5 @@
 import Link from "next/link";
+import JsonLd from "./components/JsonLd"
 import Nav from "./components/page";
 import { ExperienceSection } from "./experience/page";
 import AboutSection from "./about/page";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <Nav />
+      <JsonLd />
 
       {/* Hero */}
       <section className="flex items-center justify-center px-6 pt-10 pb-10">
