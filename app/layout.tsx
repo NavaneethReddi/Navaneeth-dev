@@ -6,7 +6,7 @@ import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
-const BASE = 'https://clerk-nextjs-phi.vercel.app'
+const BASE = 'https://navaneeth-dev-alpha.vercel.app/'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
