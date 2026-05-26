@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://clerk-nextjs-phi.vercel.app'
+const BASE_URL = 'https://navaneeth-dev-alpha.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
