@@ -4,7 +4,7 @@ export default function JsonLd() {
     '@type': 'Person',
     name: 'Navaneeth Reddy Pinnapureddy',
     alternateName: 'Navaneeth Reddy',
-    url: 'https://clerk-nextjs-phi.vercel.app',
+    url: 'https://navaneeth-dev-alpha.vercel.app',
     jobTitle: 'Principal Architect',
     description:
       'Senior Full-Stack Developer and Principal Architect with 12+ years of experience building enterprise web applications.',
@@ -40,7 +40,7 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Navaneeth Reddy — Portfolio',
-    url: 'https://clerk-nextjs-phi.vercel.app',
+    url: 'https://navaneeth-dev-alpha.vercel.app',
     author: { '@type': 'Person', name: 'Navaneeth Reddy Pinnapureddy' },
   }
 
