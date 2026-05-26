@@ -21,7 +21,7 @@ const highlights = [
 export default function AboutSection() {
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-6xl mx-auto px-6 py-20">
+      <div className="max-w-6xl mx-auto pl-12 pr-6 py-20">
 
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
