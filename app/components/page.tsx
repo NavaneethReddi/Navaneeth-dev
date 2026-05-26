@@ -6,12 +6,12 @@ import { Show, SignInButton, UserButton } from "@clerk/nextjs";
 import { useTheme } from "../providers/ThemeProvider";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/experience", label: "Experience" },
+  { href: "/",             label: "Home" },
+  { href: "/about",        label: "About" },
+  { href: "/experience",   label: "Experience" },
   { href: "/testimonials", label: "Testimonials" },
-  { href: "/skills", label: "Skills" },
-  { href: "/contact", label: "Contact" },
+  { href: "/skills",       label: "Skills" },
+  { href: "/contact",      label: "Contact" },
 ];
 
 function SunIcon() {
@@ -43,13 +43,10 @@ function MoonIcon() {
 export default function Nav() {
   const pathname = usePathname();
   const { theme, toggle } = useTheme();
-  const sidebarOffset = pathname === "/" ? "lg:pr-[300px]" : "";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-6xl mx-auto pl-12 pr-6 h-16 flex items-center justify-between">
-    <nav className={`fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors ${sidebarOffset}`}>
-      <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
 
         <Link href="/" className="text-slate-900 dark:text-white font-semibold text-lg tracking-tight">
           NR<span className="text-cyan-500">.</span>
@@ -73,7 +70,7 @@ export default function Nav() {
             ))}
           </ul>
 
-          {/* Theme toggle */}
+          {/* Theme toggle — moon in light mode, sun in dark mode */}
           <button
             onClick={toggle}
             aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
