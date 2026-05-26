@@ -1,14 +1,9 @@
-import type { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/site'
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/__clerk/'],
-    },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    rules: [{ userAgent: '*', allow: '/' }],
+    sitemap: 'https://navaneeth-dev-alpha.vercel.app/sitemap.xml',
+    host: 'https://navaneeth-dev-alpha.vercel.app',
   }
 }

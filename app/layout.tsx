@@ -1,56 +1,78 @@
 import type { Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
-import { ThemeProvider } from './providers/ThemeProvider'
-import { Analytics } from '@vercel/analytics/next'
-import { JsonLd } from './components/JsonLd'
-import { defaultMetadata } from '@/lib/site'
 import './globals.css'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
+const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
+const BASE_URL = 'https://navaneeth-dev-alpha.vercel.app'
 
-export const metadata: Metadata = defaultMetadata
+export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'Navaneeth Reddy | Principal Architect & Full-Stack Developer',
+    template: '%s | Navaneeth Reddy',
+  },
+  description:
+    'Senior Full-Stack Developer and Principal Architect with 12+ years building scalable React, Next.js, and Node.js applications for Fortune 500 companies. Based in Minneapolis, MN.',
+  keywords: [
+    'Navaneeth Reddy',
+    'Navaneeth Reddy Pinnapureddy',
+    'Principal Architect Minneapolis',
+    'Full Stack Developer Minneapolis',
+    'React Developer Minneapolis',
+    'Next.js Developer',
+    'Senior Software Engineer Minnesota',
+    'Frontend Architect',
+    'TypeScript Developer',
+    'Node.js Developer',
+    'AWS Developer',
+    'Discover Financial Developer',
+    'US Bank Developer',
+    'Cognizant Architect',
+  ],
+  authors: [{ name: 'Navaneeth Reddy Pinnapureddy', url: BASE_URL }],
+  creator: 'Navaneeth Reddy Pinnapureddy',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: BASE_URL,
+    siteName: 'Navaneeth Reddy — Portfolio',
+    title: 'Navaneeth Reddy | Principal Architect & Full-Stack Developer',
+    description:
+      '12+ years of enterprise engineering. React, Next.js, TypeScript, Node.js, Spring Boot, AWS. Currently Principal Architect at Discover Financial Services, Minneapolis.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Navaneeth Reddy — Principal Architect & Full-Stack Developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Navaneeth Reddy | Principal Architect & Full-Stack Developer',
+    description:
+      '12+ years of enterprise engineering. React, Next.js, TypeScript, AWS. Minneapolis, MN.',
+    images: ['/og-image.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-snippet': -1, 'max-image-preview': 'large' },
+  },
+  alternates: { canonical: BASE_URL },
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                var stored = localStorage.getItem('theme');
-                if (stored === 'dark') {
-                  document.documentElement.classList.add('dark');
-                } else {
-                  document.documentElement.classList.remove('dark');
-                  if (!stored) localStorage.setItem('theme', 'light');
-                }
-              } catch(e) {}
-            `,
-          }}
-        />
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16`}>
-        <JsonLd />
         <ClerkProvider>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          {children}
         </ClerkProvider>
-        <Analytics />
       </body>
     </html>
   )
