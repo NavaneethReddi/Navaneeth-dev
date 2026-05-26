@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 
 ;
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "emailjs-com";
+
 import Nav from "../components/page";
 
 export function ContactSection() {
@@ -25,11 +27,58 @@ export function ContactSection() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+   
+  const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Email validation using serverless API route
+  const validateEmail = async (email: string) => {
+    try {
+      const response = await fetch("/api/validate-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      return data.valid;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", form);
-    setSubmitted(true);
+    setLoading(true)
+    setStatus(null);
+
+    const email = (form.email as unknown as HTMLInputElement)?.value;
+    console.log("Validating email:", email);
+    const isValid = await validateEmail(form.email);
+
+    if (!isValid) {
+      setStatus("Invalid or undeliverable email address.");
+      setLoading(false);
+      return;
+    }
+
+    emailjs
+      .sendForm(
+        "service_m1cky61",      // Replace with your EmailJS service ID
+        "template_b8pdmam",     // Replace with your EmailJS template ID
+        e.target as HTMLFormElement,
+        "0VD5drCEigGwb2beB"     // Replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setStatus("Message sent successfully!");
+          setSubmitted(true);},
+        () => {
+          setStatus("Failed to send message. Please try again.");
+        }
+      ).catch(() => {
+        setStatus("An unexpected error occurred. Please try again.");
+      })
+      .finally(() => setLoading(false));
   };
 
   const inputClass = "w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-sm placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors";
@@ -37,6 +86,7 @@ export function ContactSection() {
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-6xl mx-auto pl-12 pr-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-20">
         <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
         <h2 className="text-4xl font-bold mb-3 text-slate-900 dark:text-white">Get in Touch</h2>
         <p className="text-slate-600 dark:text-slate-400 mb-14">

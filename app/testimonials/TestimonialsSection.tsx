@@ -1,19 +1,4 @@
-"use client"
-
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Testimonials',
-  description: 'Recommendations from colleagues and stakeholders who have worked with Navaneeth Reddy at US Bank, Cognizant, and Salesforce.',
-  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/testimonials' },
-  openGraph: {
-    title: 'Testimonials | Navaneeth Reddy',
-    description: 'Recommendations from colleagues and stakeholders who have worked with Navaneeth Reddy at US Bank, Cognizant, and Salesforce.',
-    url: 'https://clerk-nextjs-phi.vercel.app/testimonials',
-  },
-}
-
-;
+"use client";
 
 import { useState, useEffect } from "react";
 
@@ -77,7 +62,7 @@ function Card({ t }: { t: Testimonial }) {
   );
 }
 
-export default function Testimonials() {
+export default function TestimonialsSection() {
   const [isMobile, setIsMobile] = useState(false);
   const [current, setCurrent] = useState(0);
 
@@ -93,7 +78,7 @@ export default function Testimonials() {
 
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-6xl mx-auto pl-12 pr-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-20">
         <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Testimonials</p>
         <h2 className="text-4xl font-bold mb-3 text-slate-900 dark:text-white">What People Say</h2>
         <p className="text-slate-600 dark:text-slate-400 mb-14">Kind words from colleagues and stakeholders.</p>
@@ -129,25 +114,7 @@ export default function Testimonials() {
             {testimonials.map((t, i) => <Card key={i} t={t} />)}
           </div>
         )}
-import type { Metadata } from "next";
-import Nav from "../components/page";
-import TestimonialsSection from "./TestimonialsSection";
-import { createPageMetadata } from "@/lib/site";
-
-export const metadata: Metadata = createPageMetadata({
-  title: "Testimonials",
-  description:
-    "Recommendations from colleagues at U.S. Bank, Cognizant, and Salesforce for Navaneeth Reddy, Principal Architect.",
-  path: "/testimonials",
-});
-
-export default function TestimonialsPage() {
-  return (
-    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
-      <Nav />
-      <div className="pt-16">
-        <TestimonialsSection />
       </div>
-    </main>
+    </section>
   );
 }

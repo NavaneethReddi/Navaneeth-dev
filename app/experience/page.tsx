@@ -11,7 +11,16 @@ export const metadata: Metadata = {
   },
 }
 
+import type { Metadata } from "next";
 import Nav from "../components/page";
+import { createPageMetadata } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Experience",
+  description:
+    "Work experience and education for Navaneeth Reddy — 12+ years in enterprise full-stack development at Discover Financial, US Bank, and more.",
+  path: "/experience",
+});
 
 const jobs = [
   {
@@ -167,6 +176,7 @@ export function ExperienceSection() {
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
       <div className="max-w-6xl mx-auto pl-12 pr-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-20">
         <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
         <h2 className="text-4xl font-bold mb-3 text-slate-900 dark:text-white">Work Experience</h2>
         <p className="text-slate-600 dark:text-slate-400 mb-14">

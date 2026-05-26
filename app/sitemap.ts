@@ -16,6 +16,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}${path}`,
     lastModified: new Date(),
     changeFrequency: freq as MetadataRoute.Sitemap[0]['changeFrequency'],
+import type { MetadataRoute } from 'next'
+import { publicRoutes, siteConfig } from '@/lib/site'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date()
+
+  return publicRoutes.map(({ path, priority, changeFrequency }) => ({
+    url: `${siteConfig.url}${path === '/' ? '' : path}`,
+    lastModified,
+    changeFrequency,
     priority,
   }))
 }

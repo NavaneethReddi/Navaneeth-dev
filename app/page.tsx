@@ -1,26 +1,46 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "./components/JsonLd"
 import Nav from "./components/page";
 import { ExperienceSection } from "./experience/page";
-import AboutSection from "./about/page";
+import AboutSection from "./about/AboutSection";
 import { SkillsSection } from "./skills/page";
 import { ContactSection } from "./contact/page";
-import Testimonials from "./testimonials/page";
+import TestimonialsSection from "./testimonials/TestimonialsSection";
+import TechNews from "./technews/pages";
+import { fetchTechNews } from "./technews/api";
+import { createPageMetadata, homeTitle, siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: homeTitle,
+  description: siteConfig.description,
+  path: "/",
+});
 
 const topSkills = [
   "React", "Next.js", "TypeScript", "Node.js",
   "Spring Boot", "AWS", "GraphQL", "Tailwind CSS",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { articles, loading, apiSuccess } = await fetchTechNews();
+ 
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors lg:pr-[300px]">
       <Nav />
       <JsonLd />
 
       {/* Hero */}
       <section className="flex items-center justify-center pl-12 pr-6 pt-10 pb-10">
         <div className="w-full max-w-6xl text-center">
+      <TechNews
+        articles={articles}
+        loading={loading}
+        apiSuccess={apiSuccess}
+        hidden={false}
+      />
+       <section className="flex items-center justify-center px-6 pt-10 pb-10">
+        <div className="w-full max-w-4xl mx-auto text-center">
           <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-4">
             Available for opportunities
           </p>
@@ -30,7 +50,7 @@ export default function Home() {
               Principal Architect
             </span>
           </h1>
-          <p className="mx-auto text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8 max-w-3xl">
+          <p className="mx-auto text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8 max-w-2xl">
             Senior Full-Stack Developer &amp; Principal Architect with 12+ years designing
             scalable, high-performance web applications for Fortune 500 financial institutions.
             Currently at{" "}
@@ -70,7 +90,7 @@ export default function Home() {
       <ExperienceSection />
       <SkillsSection />
       <ContactSection />
-      <Testimonials />
+      <TestimonialsSection />
 
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8 px-6 text-center text-slate-500 text-sm transition-colors">
         <p>

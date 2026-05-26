@@ -1,16 +1,3 @@
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'About',
-  description: 'Learn about Navaneeth Reddy Pinnapureddy — Principal Architect with 12+ years in enterprise engineering, React, Next.js, and full-stack development. Based in Minneapolis, MN.',
-  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/about' },
-  openGraph: {
-    title: 'About | Navaneeth Reddy',
-    description: 'Learn about Navaneeth Reddy Pinnapureddy — Principal Architect with 12+ years in enterprise engineering, React, Next.js, and full-stack development. Based in Minneapolis, MN.',
-    url: 'https://clerk-nextjs-phi.vercel.app/about',
-  },
-}
-
 const highlights = [
   { value: "12+", label: "Years Experience" },
   { value: "30+", label: "Enterprise Apps" },
@@ -21,9 +8,8 @@ const highlights = [
 export default function AboutSection() {
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-6xl mx-auto pl-12 pr-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-20">
 
-        {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
           {highlights.map(({ value, label }) => (
             <div key={label} className="text-center">
@@ -33,7 +19,6 @@ export default function AboutSection() {
           ))}
         </div>
 
-        {/* Intro + cards */}
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-6 text-slate-900 dark:text-white">
@@ -69,25 +54,8 @@ export default function AboutSection() {
             ))}
           </div>
         </div>
-import type { Metadata } from "next";
-import Nav from "../components/page";
-import AboutSection from "./AboutSection";
-import { createPageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "About",
-  description:
-    "Learn about Navaneeth Reddy's 12+ years building scalable enterprise software for Fortune 500 financial institutions in Minneapolis.",
-  path: "/about",
-});
-
-export default function AboutPage() {
-  return (
-    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
-      <Nav />
-      <div className="pt-16">
-        <AboutSection />
       </div>
-    </main>
+    </section>
   );
 }
