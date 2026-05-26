@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "./components/JsonLd"
 import Nav from "./components/page";
 import { ExperienceSection } from "./experience/page";
 import AboutSection from "./about/AboutSection";
@@ -27,6 +28,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors lg:pr-[300px]">
       <Nav />
+      <JsonLd />
       <TechNews
         articles={articles}
         loading={loading}
