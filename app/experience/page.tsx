@@ -162,7 +162,7 @@ function Timeline() {
 export function ExperienceSection() {
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-4xl mx-auto px-6 py-20">
+      <div className="max-w-6xl mx-auto pl-24 pr-6 py-20">
         <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-3">Career</p>
         <h2 className="text-4xl font-bold mb-3 text-slate-900 dark:text-white">Work Experience</h2>
         <p className="text-slate-600 dark:text-slate-400 mb-14">

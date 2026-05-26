@@ -35,7 +35,7 @@ export default async function Home() {
         apiSuccess={apiSuccess}
         hidden={false}
       />
-       <section className="flex items-center justify-center px-6 pt-10 pb-10">
+       <section className="flex items-center justify-center pl-24 pr-6 pt-10 pb-10">
         <div className="w-full max-w-4xl mx-auto text-center">
           <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-4">
             Available for opportunities
@@ -88,7 +88,7 @@ export default async function Home() {
       <ContactSection />
       <TestimonialsSection />
 
-      <footer className="border-t border-slate-200 dark:border-slate-800 py-8 px-6 text-center text-slate-500 text-sm transition-colors">
+      <footer className="border-t border-slate-200 dark:border-slate-800 py-8 pl-24 pr-6 text-center text-slate-500 text-sm transition-colors">
         <p>
           Navaneeth Reddy Pinnapureddy · Minneapolis, MN ·{" "}
           <a href="mailto:Navaneethr.work9@gmail.com" className="text-cyan-500 hover:underline">

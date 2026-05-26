@@ -47,7 +47,7 @@ export default function Nav() {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors ${sidebarOffset}`}>
-      <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto pl-24 pr-6 h-16 flex items-center justify-between">
 
         <Link href="/" className="text-slate-900 dark:text-white font-semibold text-lg tracking-tight">
           NR<span className="text-cyan-500">.</span>
