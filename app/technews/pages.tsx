@@ -162,21 +162,7 @@ export default function TechNews({
               Failed to load tech news. Please try again later.
             </div>
           )}
-          <div style={{ textAlign: "right", marginTop: "0.7rem" }}>
-            <a
-              href="https://news.google.com/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFZ4Y0dNU0FtVnVLQUFQAQ?oc=3"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#4361ee",
-                fontWeight: 600,
-                fontSize: "0.98rem",
-                textDecoration: "none",
-              }}
-            >
-              View more tech news &rarr;
-            </a>
-          </div>
+          
         </aside>
       )}
     </>
