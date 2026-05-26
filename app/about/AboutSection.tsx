@@ -8,7 +8,7 @@ const highlights = [
 export default function AboutSection() {
   return (
     <section className="border-t border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-4xl mx-auto px-6 py-20">
+      <div className="max-w-6xl mx-auto pl-36 pr-6 py-20">
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
           {highlights.map(({ value, label }) => (
