@@ -2,20 +2,45 @@ import { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://navaneeth-dev-alpha.vercel.app'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = [
-    { path: '',             priority: 1.0, freq: 'monthly' },
-    { path: '/about',       priority: 0.9, freq: 'monthly' },
-    { path: '/experience',  priority: 0.9, freq: 'monthly' },
-    { path: '/skills',      priority: 0.8, freq: 'monthly' },
-    { path: '/contact',     priority: 0.7, freq: 'monthly' },
-    { path: '/testimonials',priority: 0.6, freq: 'monthly' },
-  ]
+const LAST_MODIFIED = new Date('2026-05-01')
 
-  return pages.map(({ path, priority, freq }) => ({
-    url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
-    changeFrequency: freq as MetadataRoute.Sitemap[0]['changeFrequency'],
-    priority,
-  }))
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: BASE_URL,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${BASE_URL}/about`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/experience`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/skills`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/testimonials`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/contact`,
+      lastModified: LAST_MODIFIED,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+  ]
 }

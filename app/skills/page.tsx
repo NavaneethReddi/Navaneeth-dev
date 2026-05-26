@@ -143,10 +143,35 @@ export function SkillsSection() {
   );
 }
 
+const skillsJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': 'https://navaneeth-dev-alpha.vercel.app/skills',
+  name: 'Technical Skills — Navaneeth Reddy Pinnapureddy',
+  description: 'Technical skills and expertise: React, Next.js, TypeScript, Node.js, Spring Boot, AWS, GraphQL.',
+  about: {
+    '@type': 'Person',
+    '@id': 'https://navaneeth-dev-alpha.vercel.app/#person',
+    knowsAbout: [
+      'React.js', 'Next.js', 'TypeScript', 'Angular', 'React Native',
+      'Node.js', 'Spring Boot', 'NestJS', 'REST APIs', 'Microservices',
+      'AWS', 'Azure', 'Docker', 'Kubernetes', 'Jenkins',
+      'MongoDB', 'PostgreSQL', 'Redis', 'Kafka',
+      'Jest', 'Playwright', 'Storybook', 'GraphQL',
+    ],
+  },
+}
+
 export default function SkillsPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <Nav />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(skillsJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <div className="pt-16"><SkillsSection /></div>
     </main>
   );

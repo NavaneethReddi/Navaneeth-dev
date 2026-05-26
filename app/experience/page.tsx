@@ -197,10 +197,47 @@ export function ExperienceSection() {
   );
 }
 
+const experienceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': 'https://navaneeth-dev-alpha.vercel.app/experience',
+  name: 'Work Experience — Navaneeth Reddy Pinnapureddy',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': 'https://navaneeth-dev-alpha.vercel.app/#person',
+    name: 'Navaneeth Reddy Pinnapureddy',
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: "Master's in Information Technology Management",
+        credentialCategory: 'degree',
+        recognizedBy: { '@type': 'EducationalOrganization', name: 'Cumberland University' },
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        name: "Master's in Computer Science",
+        credentialCategory: 'degree',
+        recognizedBy: { '@type': 'EducationalOrganization', name: 'Silicon Valley University' },
+      },
+    ],
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Discover Financial Services',
+      url: 'https://www.discover.com',
+    },
+  },
+}
+
 export default function ExperiencePage() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <Nav />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(experienceJsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <div className="pt-16"><ExperienceSection /></div>
     </main>
   );

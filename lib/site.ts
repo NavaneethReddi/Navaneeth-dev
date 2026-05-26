@@ -6,7 +6,6 @@ export const SITE_URL = 'https://navaneeth-dev-alpha.vercel.app'
 export const siteConfig = {
   name: 'Navaneeth Reddy',
   fullName: 'Navaneeth Reddy Pinnapureddy',
-  /** Short role line — similar to portfolio sites indexed by name + role */
   role: 'Full Stack Developer',
   title: 'Principal Architect',
   description:
@@ -28,10 +27,12 @@ export const siteConfig = {
     'TypeScript',
     'Enterprise Software Architect',
     'Discover Financial Services',
+    'Senior Software Engineer Minnesota',
+    'Minneapolis Developer',
   ],
 } as const
 
-/** Homepage title pattern: name + role (like puneeth-reddy.vercel.app) */
+/** Homepage title: full name + role */
 export const homeTitle = `${siteConfig.fullName} | ${siteConfig.role}`
 
 export const publicRoutes = [
@@ -67,11 +68,20 @@ export function createPageMetadata({
       siteName: siteConfig.fullName,
       locale: siteConfig.locale,
       type: 'website',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `${pageTitle} — ${siteConfig.location}`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: pageTitle,
       description,
+      images: [{ url: '/og-image.png', alt: pageTitle }],
     },
   }
 }
@@ -87,6 +97,7 @@ export const defaultMetadata: Metadata = {
   authors: [{ name: siteConfig.fullName, url: siteConfig.url }],
   creator: siteConfig.fullName,
   applicationName: siteConfig.fullName,
+  formatDetection: { email: false, address: false, telephone: false },
   robots: {
     index: true,
     follow: true,
@@ -108,11 +119,20 @@ export const defaultMetadata: Metadata = {
     siteName: siteConfig.fullName,
     title: homeTitle,
     description: siteConfig.description,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.fullName} — ${siteConfig.title}`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: homeTitle,
     description: siteConfig.description,
+    images: [{ url: '/og-image.png', alt: `${siteConfig.fullName} — ${siteConfig.title}` }],
   },
   ...(process.env.GOOGLE_SITE_VERIFICATION && {
     verification: {
