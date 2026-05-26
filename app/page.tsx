@@ -6,6 +6,8 @@ import AboutSection from "./about/AboutSection";
 import { SkillsSection } from "./skills/page";
 import { ContactSection } from "./contact/page";
 import TestimonialsSection from "./testimonials/TestimonialsSection";
+import TechNews from "./technews/pages";
+import { fetchTechNews } from "./technews/api";
 import { createPageMetadata, homeTitle, siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = createPageMetadata({
@@ -19,14 +21,20 @@ const topSkills = [
   "Spring Boot", "AWS", "GraphQL", "Tailwind CSS",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const { articles, loading, apiSuccess } = await fetchTechNews();
+ 
   return (
-    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+    <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors lg:pr-[300px]">
       <Nav />
-
-      {/* Hero */}
-      <section className="flex items-center justify-center px-6 pt-10 pb-10">
-        <div className="w-full max-w-6xl text-center">
+      <TechNews
+        articles={articles}
+        loading={loading}
+        apiSuccess={apiSuccess}
+        hidden={false}
+      />
+       <section className="flex items-center justify-center px-6 pt-10 pb-10">
+        <div className="w-full max-w-4xl mx-auto text-center">
           <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-4">
             Available for opportunities
           </p>
@@ -36,7 +44,7 @@ export default function Home() {
               Principal Architect
             </span>
           </h1>
-          <p className="mx-auto text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8 max-w-3xl">
+          <p className="mx-auto text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8 max-w-2xl">
             Senior Full-Stack Developer &amp; Principal Architect with 12+ years designing
             scalable, high-performance web applications for Fortune 500 financial institutions.
             Currently at{" "}
