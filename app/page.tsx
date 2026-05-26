@@ -19,7 +19,7 @@ export default function Home() {
       <JsonLd />
 
       {/* Hero */}
-      <section className="flex items-center justify-center px-6 pt-10 pb-10">
+      <section className="flex items-center justify-center pl-12 pr-6 pt-10 pb-10">
         <div className="w-full max-w-6xl text-center">
           <p className="text-cyan-500 text-sm font-medium tracking-widest uppercase mb-4">
             Available for opportunities
