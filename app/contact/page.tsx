@@ -1,19 +1,7 @@
 "use client"
 
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Hire Navaneeth Reddy — Principal Architect and Full-Stack Developer in Minneapolis, MN. Open to senior engineering roles, consulting, and architecture reviews.',
-  alternates: { canonical: 'https://clerk-nextjs-phi.vercel.app/contact' },
-  openGraph: {
-    title: 'Contact | Navaneeth Reddy',
-    description: 'Hire Navaneeth Reddy — Principal Architect and Full-Stack Developer in Minneapolis, MN. Open to senior engineering roles, consulting, and architecture reviews.',
-    url: 'https://clerk-nextjs-phi.vercel.app/contact',
-  },
-}
-
-;
+ 
+ 
 
 import { useRef, useState } from "react";
 import emailjs from "emailjs-com";
