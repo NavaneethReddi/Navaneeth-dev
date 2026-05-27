@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-16`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased pt-32`}>
         <ClerkProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </ClerkProvider>
