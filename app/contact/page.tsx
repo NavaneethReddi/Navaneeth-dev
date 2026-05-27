@@ -176,7 +176,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
       <Nav />
-      <div className="pt-16"><ContactSection /></div>
+      <div className="pt-0"><ContactSection /></div>
     </main>
   );
 }

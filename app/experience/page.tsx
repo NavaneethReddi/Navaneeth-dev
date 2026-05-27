@@ -238,7 +238,7 @@ export default function ExperiencePage() {
           __html: JSON.stringify(experienceJsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <div className="pt-16"><ExperienceSection /></div>
+      <div className="pt-0"><ExperienceSection /></div>
     </main>
   );
 }

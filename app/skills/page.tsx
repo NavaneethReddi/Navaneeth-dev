@@ -172,7 +172,7 @@ export default function SkillsPage() {
           __html: JSON.stringify(skillsJsonLd).replace(/</g, '\\u003c'),
         }}
       />
-      <div className="pt-16"><SkillsSection /></div>
+      <div className="pt-0"><SkillsSection /></div>
     </main>
   );
 }
