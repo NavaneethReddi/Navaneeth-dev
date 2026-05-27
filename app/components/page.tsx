@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Show, SignInButton, UserButton } from "@clerk/nextjs"
@@ -18,7 +19,7 @@ const apps = [
   {
     name: "JS Compiler",
     url: "https://navaneeth-jscompiler.vercel.app/",
-    color: "#f59e0b",
+    icon: "code",
     bgColor: "bg-amber-500/10 dark:bg-amber-500/20",
     borderColor: "hover:border-amber-400 dark:hover:border-amber-500",
     iconColor: "text-amber-500",
@@ -26,7 +27,7 @@ const apps = [
   {
     name: "AI Chat",
     url: "https://navaneeth-gpt.vercel.app/",
-    color: "#10b981",
+    icon: "chat",
     bgColor: "bg-emerald-500/10 dark:bg-emerald-500/20",
     borderColor: "hover:border-emerald-400 dark:hover:border-emerald-500",
     iconColor: "text-emerald-500",
@@ -34,10 +35,18 @@ const apps = [
   {
     name: "AI Interview",
     url: "https://navaneeth-ai-interview.vercel.app/",
-    color: "#3b82f6",
+    icon: "briefcase",
     bgColor: "bg-blue-500/10 dark:bg-blue-500/20",
     borderColor: "hover:border-blue-400 dark:hover:border-blue-500",
     iconColor: "text-blue-500",
+  },
+  {
+    name: "Interview Prep",
+    url: "https://interview-preparation-rose.vercel.app/",
+    icon: "book",
+    bgColor: "bg-rose-500/10 dark:bg-rose-500/20",
+    borderColor: "hover:border-rose-400 dark:hover:border-rose-500",
+    iconColor: "text-rose-500",
   },
 ]
 
@@ -74,6 +83,12 @@ const BriefcaseIcon = () => (
   </svg>
 )
 
+const BookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+  </svg>
+)
+
 const ExternalLinkIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
@@ -81,7 +96,13 @@ const ExternalLinkIcon = () => (
 )
 
 function AppNavLink({ app }: { app: (typeof apps)[0] }) {
-  const Icon = app.name === "JS Compiler" ? CodeIcon : app.name === "AI Chat" ? MessageCircleIcon : BriefcaseIcon
+  const iconMap: Record<string, () => React.ReactElement> = {
+    code: CodeIcon,
+    chat: MessageCircleIcon,
+    briefcase: BriefcaseIcon,
+    book: BookIcon,
+  }
+  const Icon = iconMap[app.icon]
 
   return (
     <a
