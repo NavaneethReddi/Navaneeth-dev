@@ -42,7 +42,7 @@ const apps = [
   },
   {
     name: "Interview Prep",
-    url: "https://interview-preparation-rose.vercel.app/",
+    url: "https://navaneeth-interview-questions.vercel.app/",
     icon: "book",
     bgColor: "bg-rose-500/10 dark:bg-rose-500/20",
     borderColor: "hover:border-rose-400 dark:hover:border-rose-500",
