@@ -50,7 +50,7 @@ export const metadata: Metadata = {
       '12+ years enterprise engineering. React, Next.js, TypeScript, Node.js, AWS. Minneapolis, MN.',
     images: [
       {
-        url: '/og-image.png',
+        url: `${BASE}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: 'Navaneeth Reddy — Principal Architect & Full-Stack Developer',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: 'Navaneeth Reddy | Principal Architect & Full-Stack Developer',
     description:
       '12+ years enterprise engineering. React, Next.js, TypeScript, Node.js, AWS. Minneapolis, MN.',
-    images: [{ url: '/og-image.png', alt: 'Navaneeth Reddy — Principal Architect' }],
+    images: [{ url: `${BASE}/opengraph-image`, alt: 'Navaneeth Reddy — Principal Architect' }],
   },
   robots: {
     index: true,

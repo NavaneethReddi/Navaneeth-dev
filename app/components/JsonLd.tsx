@@ -1,35 +1,39 @@
-const SITE = 'https://navaneeth-dev-alpha.vercel.app'
+import { siteConfig } from '@/lib/site'
 
 function safeJson(obj: object): string {
   return JSON.stringify(obj).replace(/</g, '\\u003c')
 }
 
 export default function JsonLd() {
+  const SITE = siteConfig.url
+
   const person = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': `${SITE}/#person`,
-    name: 'Navaneeth Reddy Pinnapureddy',
-    alternateName: 'Navaneeth Reddy',
+    name: siteConfig.fullName,
+    alternateName: siteConfig.name,
     url: SITE,
-    jobTitle: 'Principal Architect',
-    description:
-      'Senior Full-Stack Developer & Principal Architect with 12+ years designing scalable, high-performance web applications for Fortune 500 financial institutions.',
-    email: 'Navaneethr.work9@gmail.com',
-    telephone: '+1-314-793-5365',
+    jobTitle: siteConfig.title,
+    description: siteConfig.description,
+    email: siteConfig.email,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Minneapolis',
+      addressLocality: siteConfig.location.split(',')[0] || 'Minneapolis',
       addressRegion: 'MN',
       addressCountry: 'US',
     },
-    sameAs: [
-      'https://www.linkedin.com/in/navaneeth-reddy-pinnapureddy/',
-      'https://github.com/NavaneethReddi',
-    ],
+    sameAs: [siteConfig.linkedIn, siteConfig.github],
     knowsAbout: [
-      'React.js', 'Next.js', 'TypeScript', 'Node.js', 'Spring Boot',
-      'AWS', 'GraphQL', 'Tailwind CSS', 'Microservices Architecture',
+      'React.js',
+      'Next.js',
+      'TypeScript',
+      'Node.js',
+      'Spring Boot',
+      'AWS',
+      'GraphQL',
+      'Tailwind CSS',
+      'Microservices Architecture',
       'Enterprise Software Architecture',
     ],
     worksFor: {
@@ -43,8 +47,8 @@ export default function JsonLd() {
     ],
     hasOccupation: {
       '@type': 'Occupation',
-      name: 'Principal Architect',
-      occupationLocation: { '@type': 'City', name: 'Minneapolis' },
+      name: siteConfig.title,
+      occupationLocation: { '@type': 'City', name: siteConfig.location.split(',')[0] || 'Minneapolis' },
       skills: 'React, Next.js, TypeScript, Node.js, Spring Boot, AWS, GraphQL',
     },
   }
@@ -53,11 +57,10 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${SITE}/#website`,
-    name: 'Navaneeth Reddy — Portfolio',
+    name: `${siteConfig.fullName} — Portfolio`,
     url: SITE,
     author: { '@id': `${SITE}/#person` },
-    description:
-      'Portfolio of Navaneeth Reddy Pinnapureddy, Principal Architect and Full-Stack Developer.',
+    description: siteConfig.description,
     inLanguage: 'en-US',
   }
 

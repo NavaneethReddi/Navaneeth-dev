@@ -69,19 +69,19 @@ export function createPageMetadata({
       locale: siteConfig.locale,
       type: 'website',
       images: [
-        {
-          url: '/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: `${pageTitle} — ${siteConfig.location}`,
-        },
+          {
+            url: `${siteConfig.url}/opengraph-image`,
+            width: 1200,
+            height: 630,
+            alt: `${pageTitle} — ${siteConfig.location}`,
+          },
       ],
     },
     twitter: {
       card: 'summary_large_image',
       title: pageTitle,
       description,
-      images: [{ url: '/og-image.png', alt: pageTitle }],
+        images: [{ url: `${siteConfig.url}/opengraph-image`, alt: pageTitle }],
     },
   }
 }
@@ -121,7 +121,7 @@ export const defaultMetadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: '/og-image.png',
+        url: `${siteConfig.url}/opengraph-image`,
         width: 1200,
         height: 630,
         alt: `${siteConfig.fullName} — ${siteConfig.title}`,
@@ -132,7 +132,7 @@ export const defaultMetadata: Metadata = {
     card: 'summary_large_image',
     title: homeTitle,
     description: siteConfig.description,
-    images: [{ url: '/og-image.png', alt: `${siteConfig.fullName} — ${siteConfig.title}` }],
+    images: [{ url: `${siteConfig.url}/opengraph-image`, alt: `${siteConfig.fullName} — ${siteConfig.title}` }],
   },
   ...(process.env.GOOGLE_SITE_VERIFICATION && {
     verification: {
