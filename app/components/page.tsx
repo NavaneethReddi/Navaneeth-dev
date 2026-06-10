@@ -48,6 +48,14 @@ const apps = [
     borderColor: "hover:border-rose-400 dark:hover:border-rose-500",
     iconColor: "text-rose-500",
   },
+  {
+    name: "Perplexity Computer",
+    url: "https://perpelexity-computer.vercel.app/",
+    icon: "code",
+    bgColor: "bg-violet-500/10 dark:bg-violet-500/20",
+    borderColor: "hover:border-violet-400 dark:hover:border-violet-500",
+    iconColor: "text-violet-500",
+  }
 ]
 
 const SunIcon = () => (
