@@ -8,7 +8,7 @@ import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
-const BASE = 'https://navaneeth-dev-alpha.vercel.app'
+const BASE = 'http://navaneeth-coder.vercel.app/'
 
 export const viewport: Viewport = {
   themeColor: '#06b6d4',
