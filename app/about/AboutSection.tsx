@@ -2,7 +2,7 @@ const highlights = [
   { value: "12+", label: "Years Experience" },
   { value: "30+", label: "Enterprise Apps" },
   { value: "40%", label: "Perf Improvement" },
-  { value: "20+", label: "Devs Mentored" },
+  { value: "50+", label: "Devs Mentored" },
 ];
 
 export default function AboutSection() {
