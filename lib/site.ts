@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 /** Production site URL — used for sitemap, canonical URLs, and structured data */
-export const SITE_URL = 'https://navaneeth-dev-alpha.vercel.app'
+export const SITE_URL = 'http://navaneeth-coder.vercel.app/'
 
 export const siteConfig = {
   name: 'Navaneeth Reddy',

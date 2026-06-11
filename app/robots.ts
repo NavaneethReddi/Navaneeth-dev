@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/_next/'],
       },
     ],
-    sitemap: 'https://navaneeth-dev-alpha.vercel.app/sitemap.xml',
-    host: 'https://navaneeth-dev-alpha.vercel.app',
+    sitemap: 'http://navaneeth-coder.vercel.app//sitemap.xml',
+    host: 'http://navaneeth-coder.vercel.app',
   }
 }

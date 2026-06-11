@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://navaneeth-dev-alpha.vercel.app'
+const BASE_URL = 'http://navaneeth-coder.vercel.app/'
 
 const LAST_MODIFIED = new Date('2026-05-01')
 

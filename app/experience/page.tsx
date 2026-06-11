@@ -200,11 +200,11 @@ export function ExperienceSection() {
 const experienceJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfilePage',
-  '@id': 'https://navaneeth-dev-alpha.vercel.app/experience',
+  '@id': 'http://navaneeth-coder.vercel.app/experience',
   name: 'Work Experience — Navaneeth Reddy Pinnapureddy',
   mainEntity: {
     '@type': 'Person',
-    '@id': 'https://navaneeth-dev-alpha.vercel.app/#person',
+    '@id': 'http://navaneeth-coder.vercel.app/#person',
     name: 'Navaneeth Reddy Pinnapureddy',
     hasCredential: [
       {

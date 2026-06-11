@@ -146,12 +146,12 @@ export function SkillsSection() {
 const skillsJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  '@id': 'https://navaneeth-dev-alpha.vercel.app/skills',
+  '@id': 'http://navaneeth-coder.vercel.app//skills',
   name: 'Technical Skills — Navaneeth Reddy Pinnapureddy',
   description: 'Technical skills and expertise: React, Next.js, TypeScript, Node.js, Spring Boot, AWS, GraphQL.',
   about: {
     '@type': 'Person',
-    '@id': 'https://navaneeth-dev-alpha.vercel.app/#person',
+    '@id': 'http://navaneeth-coder.vercel.app/#person',
     knowsAbout: [
       'React.js', 'Next.js', 'TypeScript', 'Angular', 'React Native',
       'Node.js', 'Spring Boot', 'NestJS', 'REST APIs', 'Microservices',
